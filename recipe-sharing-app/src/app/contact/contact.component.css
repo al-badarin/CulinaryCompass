@@ -1,0 +1,17 @@
+.container {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
