@@ -1,15 +1,22 @@
-<!-- <div *ngIf="selectedRecipe" class="container">
-  <h2>{{ selectedRecipe.title }}</h2>
-  <img [src]="selectedRecipe.imageUrl" alt="Recipe Image" />
-  <p>{{ selectedRecipe.description }}</p>
+<!-- h1 for test view -->
+<h1>RECIPE DETAILS</h1>
+
+<div *ngIf="recipe" class="container">
+  <h2>{{ recipe.title }}</h2>
+  <img
+    [src]="recipe.imageUrl"
+    alt="{{ recipe.title }}"
+    class="img-fluid mb-3"
+  />
+  <p>{{ recipe.description }}</p>
+
   <h3>Ingredients:</h3>
   <ul>
-    <li *ngFor="let ingredient of selectedRecipe.ingredients">
-      {{ ingredient }}
-    </li>
+    <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
   </ul>
+
   <h3>Instructions:</h3>
   <ol>
-    <li *ngFor="let step of selectedRecipe.instructions">{{ step }}</li>
+    <li *ngFor="let step of recipe.instructions">{{ step }}</li>
   </ol>
-</div> -->
+</div>
