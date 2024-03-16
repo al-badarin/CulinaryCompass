@@ -1,0 +1,21 @@
+.footer {
+  padding: 20px 0;
+}
+
+.footer p {
+  margin-bottom: 0;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.footer ul li:last-child {
+  margin-right: 0;
+}
