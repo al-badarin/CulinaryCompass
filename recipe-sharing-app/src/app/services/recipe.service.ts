@@ -122,4 +122,8 @@ export class RecipeService {
   getRecipes(): Recipe[] {
     return this.recipes;
   }
+
+  getRecipesById(id: string): Recipe | undefined {
+    return this.recipes.find((recipe) => recipe.id === id);
+  }
 }
