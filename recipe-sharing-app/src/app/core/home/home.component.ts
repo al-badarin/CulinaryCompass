@@ -13,17 +13,13 @@ export class HomeComponent implements OnInit {
   constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    this.fetchRecipes();
-  }
-
-  fetchRecipes(): void {
-    this.recipeService.getRecipes().subscribe(
-      (recipes) => {
+    this.recipeService.getRecipes().subscribe({
+      next: (recipes: Recipe[]) => {
         this.recipes = recipes;
       },
-      (error) => {
+      error: (error) => {
         console.error('Error fetching recipes:', error);
-      }
-    );
+      },
+    });
   }
 }
