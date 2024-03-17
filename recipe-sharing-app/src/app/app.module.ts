@@ -8,6 +8,7 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { CoreModule } from './core/core.module';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ContactComponent } from './contact/contact.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CoreModule,
     AppRoutingModule
   ],
