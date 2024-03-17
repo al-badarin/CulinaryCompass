@@ -9,6 +9,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ recipe.title }}</h5>
           <p class="card-text">{{ recipe.description }}</p>
+
           <a [routerLink]="['/recipes', recipe.id]" class="btn btn-primary"
             >View Recipe</a
           >
