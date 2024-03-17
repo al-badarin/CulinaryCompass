@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 import { FirestoreRecipe } from '../models/FirestoreRecipe.model';
 
 @Injectable({
@@ -154,6 +154,27 @@ export class RecipeService {
           }
         );
         return recipes;
+      })
+    );
+  }
+
+  getRecipeDetails(recipeId: string): Observable<Recipe | undefined> {
+    const url = `${this.baseUrl}/${recipeId}`;
+    return this.http.get<any>(url).pipe(
+      map((response) => {
+        const data = response.fields;
+        return {
+          id: response.name.split('/').pop(),
+          title: data.title.stringValue,
+          description: data.description.stringValue,
+          imageUrl: data.imageUrl.stringValue,
+          ingredients: data.ingredients.arrayValue.values.map(
+            (ingredient: { stringValue: string }) => ingredient.stringValue
+          ),
+          instructions: data.instructions.arrayValue.values.map(
+            (instruction: { stringValue: string }) => instruction.stringValue
+          ),
+        };
       })
     );
   }

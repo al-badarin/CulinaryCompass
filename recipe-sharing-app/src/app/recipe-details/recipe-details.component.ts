@@ -17,11 +17,15 @@ export class RecipeDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe((params) => {
-    //   const recipeId = params.get('id');
-    //   if (recipeId) {
-    //     this.recipe = this.recipeService.getRecipesById(recipeId);
-    //   }
-    // });
+    this.getRecipeDetails();
+  }
+
+  getRecipeDetails(): void {
+    const recipeId = this.route.snapshot.paramMap.get('id');
+    if (recipeId) {
+      this.recipeService
+        .getRecipeDetails(recipeId)
+        .subscribe((recipe) => (this.recipe = recipe));
+    }
   }
 }
