@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     RecipeListComponent,
     AboutComponent,
     ContactComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

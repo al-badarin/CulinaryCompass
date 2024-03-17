@@ -5,6 +5,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { HomeComponent } from './core/home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,9 +13,8 @@ const routes: Routes = [
   { path: 'recipes/:id', component: RecipeDetailsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  
-  //TODO: ADD ERROR PAGE 404!:
-  // { path: '**', redirectTo: '' } // For now, it redirects to home for unknown paths
+  {path: 'error-404', component: ErrorPageComponent},
+  { path: '**', redirectTo: '/error-404' } 
 ];
 
 
