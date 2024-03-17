@@ -158,6 +158,8 @@ export class RecipeService {
     );
   }
 
+
+  // TODO: review code explanation
   getRecipeDetails(recipeId: string): Observable<Recipe | undefined> {
     const url = `${this.baseUrl}/${recipeId}`;
     return this.http.get<any>(url).pipe(
