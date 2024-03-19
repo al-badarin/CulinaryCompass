@@ -1,4 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 a {
   cursor: pointer;
   display: inline-block;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: lightgray;
+}
+
+.navbar-brand {
+  width: 30%;
+}
+
+.d-flex {
+  width: 24%;
+}
+
+.d-flex .navbar-nav.ms-auto {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+#navbarNav {
+  width: 30%;
+}
+
+#navbarNav .navbar-nav.ms-auto {
+  align-items: flex-end;
+  text-align: center;
+}
+
+#navbarNav .navbar-nav.ms-auto li a {
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+#navbarNav .navbar-nav.ms-auto li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 767px) {
+  a.nav-link {
+    text-wrap: nowrap;
+  }
 }
