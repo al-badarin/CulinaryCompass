@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,15 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  //**CUSTOM ROUTER NAV LINKS**
-  // isNavbarOpen = false;
-  // constructor(private router: Router) {}
-  // toggleNavbar(): void {
-  //   this.isNavbarOpen = !this.isNavbarOpen;
-  // }
-  // navigateTo(route: string): void {
-  //   this.router.navigateByUrl(route);
-  //   this.isNavbarOpen = false;
-  // }
-  
+  constructor(private authService: AuthService, private router: Router) {}
+
+  loggedInUser: User | null = null;
+
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  logout(): void {
+    this.authService.logout().subscribe(
+      () => {
+        this.router.navigateByUrl('/');
+      },
+      (error) => {
+        console.error('Logout Error:', error);
+      }
+    );
+  }
 }
