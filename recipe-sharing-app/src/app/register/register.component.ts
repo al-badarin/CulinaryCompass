@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent {
   password: string = '';
   repeatPassword: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   registerUser() {
     if (this.password !== this.repeatPassword) {
@@ -29,6 +30,7 @@ export class RegisterComponent {
     this.authService.register(newUser).subscribe(
       (response) => {
         console.log('Registration successful!', response);
+        this.router.navigateByUrl('/login');
       },
       (error) => {
         console.error('Registration error:', error);
