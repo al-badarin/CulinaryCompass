@@ -1,0 +1,46 @@
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner {
+  position: relative;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0.65); 
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero-content .lead {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* @media (min-width: 768px) {
+  .hero-section {
+    height: 500px; //adjust as needed 
+  }
+} */
