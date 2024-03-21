@@ -1,5 +1,8 @@
 .footer {
+  background-color: #343a40;
+  color: #fff;
   padding: 20px 0;
+  text-align: center;
 }
 
 .footer p {
@@ -18,4 +21,13 @@
 
 .footer ul li:last-child {
   margin-right: 0;
+}
+
+.footer ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer ul li a:hover {
+  text-decoration: underline;
 }
