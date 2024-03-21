@@ -1,0 +1,67 @@
+<div class="container">
+  <h2>Add New Recipe</h2>
+  <form #recipeForm="ngForm" (ngSubmit)="onSubmit(recipeForm)">
+    <div class="form-group">
+      <label for="title">Recipe Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        ngModel
+        #recipe="ngModel"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        ngModel
+        #description="ngModel"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input
+        type="text"
+        class="form-control"
+        id="image"
+        name="image"
+        ngModel
+        #image="ngModel"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="ingredients">Ingredients</label>
+      <textarea
+        class="form-control"
+        id="ingredients"
+        name="ingredients"
+        rows="5"
+        ngModel
+        #ingredients="ngModel"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="instructions">Instructions</label>
+      <textarea
+        class="form-control"
+        id="instructions"
+        name="instructions"
+        rows="5"
+        ngModel
+        #instructions="ngModel"
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
