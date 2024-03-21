@@ -11,7 +11,7 @@
 .hero-banner img {
   width: 100%;
   height: auto;
-  filter: brightness(0.65); 
+  filter: brightness(0.65);
 }
 
 .hero-content {
@@ -39,8 +39,22 @@
   font-weight: 400;
 }
 
+/* RECENT RECIPES */
+.container {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.carousel-control-next-icon {
+  background-image: url(../../../assets/right-arrow.png);
+}
+
+.carousel-control-prev-icon {
+  background-image: url(../../../assets/left-arrow.png);
+}
+
 /* @media (min-width: 768px) {
   .hero-section {
-    height: 500px; //adjust as needed 
+    height: 500px; 
   }
 } */
