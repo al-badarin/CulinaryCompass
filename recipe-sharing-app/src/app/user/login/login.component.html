@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <h2>Login</h2>
-  <form (ngSubmit)="loginUser()">
+  <form #form="ngForm" (ngSubmit)="login(form)">
+    <!-- INPUT EMAIL -->
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
       <input
@@ -8,11 +9,29 @@
         class="form-control"
         id="email"
         placeholder="Enter email"
-        [(ngModel)]="email"
         name="email"
+        ngModel
+        #inputEmail="ngModel"
+        email
         required
+        [ngClass]="{
+          'input-success': inputEmail.valid && inputEmail.touched,
+          'input-error': inputEmail.invalid && inputEmail.touched
+        }"
       />
     </div>
+
+    <!-- EMAIL VALIDATIONS -->
+    <ng-container *ngIf="inputEmail.touched">
+      <p class="error" *ngIf="inputEmail.errors?.['required']">
+        Email is required!
+      </p>
+      <p class="error" *ngIf="inputEmail.errors?.['email']">
+        Email is not valid!
+      </p>
+    </ng-container>
+
+    <!-- PASSWORD INPUT -->
     <div class="mb-3">
       <label for="password" class="form-label">Password</label>
       <input
@@ -20,11 +39,32 @@
         class="form-control"
         id="password"
         placeholder="Password"
-        [(ngModel)]="password"
         name="password"
+        #inputPassword="ngModel"
+        ngModel
         required
+        minlength="5"
+        [ngClass]="{
+          'input-success': inputPassword.valid && inputPassword.touched,
+          'input-error': inputPassword.invalid && inputPassword.touched
+        }"
       />
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+
+    <!-- PASSWORD VALIDATIONS -->
+    <ng-container *ngIf="inputPassword.touched">
+      <p class="error" *ngIf="inputPassword.errors?.['required']">
+        Password is required!
+      </p>
+      <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+        Password must be at least
+        {{inputPassword.errors?.['minlength']['requiredLength']}} characters!
+      </p>
+    </ng-container>
+
+    <!-- ACTION -->
+    <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
+      Login
+    </button>
   </form>
 </div>
