@@ -1,4 +1,5 @@
 export interface FirestoreRecipe {
+  documents: any;
   name: string;
   fields: {
     title: { stringValue: string };
