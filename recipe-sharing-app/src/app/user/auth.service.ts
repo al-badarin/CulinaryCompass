@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class AuthService {
   private baseUrl = 'http://localhost:3000/api';
 
-  // user: User | undefined;
-  // USER_KEY = '[user]';
+  user: User | undefined;
+  USER_KEY = '[user]';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -21,8 +21,18 @@ export class AuthService {
   }
 
   // ** IMPLEMENTED BY ME **
-  register(data: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/register`, data);
+  register(
+    username: string,
+    email: string,
+    password: string,
+    repeatPassword: string
+  ) {
+    return this.http.post<User>(`${this.baseUrl}/register`, {
+      username,
+      email,
+      password,
+      repeatPassword,
+    });
   }
 
   login(data: any): Observable<any> {
@@ -36,7 +46,7 @@ export class AuthService {
   logout(): Observable<any> {
     localStorage.removeItem('token');
     return this.http.post<any>(`${this.baseUrl}/logout`, {});
-  } 
+  }
 
   getProfileInfo(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/profile`);
