@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecipeService } from '../services/recipe.service';
-import {
-  FormArray,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-recipe',
@@ -15,6 +10,8 @@ import {
 })
 export class AddRecipeComponent {
   recipeForm: FormGroup;
+  // showIngredients: boolean = false;
+  // showInstructions: boolean = false;
 
   constructor(
     private recipeService: RecipeService,
@@ -29,6 +26,14 @@ export class AddRecipeComponent {
       instructions: this.fb.array([this.fb.control('')]),
     });
   }
+
+  // toggleIngredients(): void {
+  //   this.showIngredients = !this.showIngredients;
+  // }
+
+  // toggleInstructions(): void {
+  //   this.showInstructions = !this.showInstructions;
+  // }
 
   get ingredients() {
     return this.recipeForm?.get('ingredients') as FormArray;
