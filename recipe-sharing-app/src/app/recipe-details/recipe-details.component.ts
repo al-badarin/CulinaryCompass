@@ -10,6 +10,7 @@ import { RecipeService } from '../services/recipe.service';
 })
 export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe | undefined;
+  ingredients: string | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,8 @@ export class RecipeDetailsComponent implements OnInit {
     if (id) {
       this.recipeService.getRecipeDetails(id).subscribe(
         (recipe) => {
+          // TODO:!!! 
+          // this.ingredients = recipe?.ingredients.split('.');
           this.recipe = recipe;
         },
         (error) => {
