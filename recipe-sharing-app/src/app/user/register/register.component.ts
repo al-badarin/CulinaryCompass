@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { matchPasswordsValidator } from 'src/app/shared/validators/match-passwords-validator';
 
 @Component({
   selector: 'app-register',
@@ -8,33 +10,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  repeatPassword: string = '';
+  form = this.fb.group({
+    username: ['', [Validators.required, Validators.minLength(5)]],
+    email: ['', [Validators.required, Validators.email]],
+    passGroup: this.fb.group(
+      {
+        password: ['', [Validators.required, Validators.minLength(5)]],
+        repeatPassword: ['', [Validators.required]],
+      },
+      {
+        validators: [matchPasswordsValidator('password', 'repeatPassword')],
+      }
+    ),
+  });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
-  registerUser() {
-    if (this.password !== this.repeatPassword) {
-      console.error('Passwords do not match');
+  register(): void {
+    if (this.form.invalid) {
       return;
     }
 
-    const newUser = {
-      username: this.username,
-      email: this.email,
-      password: this.password,
-    };
+    const {
+      username,
+      email,
+      passGroup: { password, repeatPassword } = {},
+    } = this.form.value;
 
-    this.authService.register(newUser).subscribe(
-      (response) => {
-        console.log('Registration successful!', response);
-        this.router.navigateByUrl('/login');
-      },
-      (error) => {
-        console.error('Registration error:', error);
-      }
-    );
+    this.authService
+      .register(username!, email!, password!, repeatPassword!)
+      .subscribe(
+        (response) => {
+          console.log('Registration successful!', response);
+          this.router.navigateByUrl('/login');
+        },
+        (error) => {
+          console.error('Registration error:', error);
+        }
+      );
   }
 }
