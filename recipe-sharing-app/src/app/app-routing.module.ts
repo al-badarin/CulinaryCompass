@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'recipes', component: RecipeListComponent },
   { path: 'recipes/:id', component: RecipeDetailsComponent },
+  { path: 'add-recipe', component: AddRecipeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   {path: 'error-404', component: ErrorPageComponent},
