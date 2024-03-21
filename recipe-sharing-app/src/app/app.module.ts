@@ -11,6 +11,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeModule } from './recipe/recipe.module';
 import { UserModule } from './user/user.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,10 @@ import { UserModule } from './user/user.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    CoreModule,
     FormsModule,
     ReactiveFormsModule,
+    CoreModule,
+    SharedModule,
     RecipeModule,
     UserModule,
     AppRoutingModule,
