@@ -47,7 +47,6 @@
             placeholder="Ingredient {{ i + 1 }}"
           />
           <button
-            *ngIf="ingredients.length > 1"
             type="button"
             class="btn btn-danger ms-2"
             (click)="removeIngredient(i)"
@@ -76,7 +75,6 @@
             placeholder="Step {{ i + 1 }}"
           />
           <button
-            *ngIf="instructions.length > 1"
             type="button"
             class="btn btn-danger ms-2"
             (click)="removeInstruction(i)"
