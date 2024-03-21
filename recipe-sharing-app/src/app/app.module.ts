@@ -13,6 +13,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     ErrorPageComponent,
     LoginComponent,
     RegisterComponent,
+    AddRecipeComponent,
   ],
   imports: [
     BrowserModule,
