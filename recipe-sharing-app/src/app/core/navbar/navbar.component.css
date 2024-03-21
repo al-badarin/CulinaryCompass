@@ -25,6 +25,10 @@ a:hover {
   width: 24%;
 }
 
+a.nav-link {
+  text-wrap: nowrap;
+}
+
 .d-flex .navbar-nav.ms-auto {
   display: flex;
   flex-direction: row;
@@ -56,11 +60,12 @@ a:hover {
 .d-flex .navbar-nav.ms-auto li a:hover,
 #navbarNav .navbar-nav.ms-auto li a:hover {
   /* color: white; */
-  background-color: rgba(13, 110, 253, .8);
+  background-color: rgba(13, 110, 253, 0.8);
 }
 
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   a.nav-link {
     text-wrap: nowrap;
   }
-}
+} */
+
