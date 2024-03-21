@@ -1,15 +1,13 @@
 <div class="container">
   <h2>Add New Recipe</h2>
-  <form #recipeForm="ngForm" (ngSubmit)="onSubmit(recipeForm)">
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="title">Recipe Title</label>
       <input
         type="text"
         class="form-control"
         id="title"
-        name="title"
-        ngModel
-        #recipe="ngModel"
+        formControlName="title"
         required
       />
     </div>
@@ -19,9 +17,7 @@
       <textarea
         class="form-control"
         id="description"
-        name="description"
-        ngModel
-        #description="ngModel"
+        formControlName="description"
         rows="3"
       ></textarea>
     </div>
@@ -32,34 +28,68 @@
         type="text"
         class="form-control"
         id="image"
-        name="image"
-        ngModel
-        #image="ngModel"
+        formControlName="image"
       />
     </div>
 
+    <!-- Ingredients -->
     <div class="form-group">
       <label for="ingredients">Ingredients</label>
-      <textarea
-        class="form-control"
-        id="ingredients"
-        name="ingredients"
-        rows="5"
-        ngModel
-        #ingredients="ngModel"
-      ></textarea>
+      <div formArrayName="ingredients">
+        <div
+          *ngFor="let ingredient of ingredients.controls; let i = index"
+          class="input-group mb-2"
+        >
+          <input
+            type="text"
+            class="form-control"
+            [formControlName]="i"
+            placeholder="Ingredient {{ i + 1 }}"
+          />
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="removeIngredient(i)"
+          >
+            -
+          </button>
+        </div>
+        <button type="button" class="btn btn-success" (click)="addIngredient()">
+          Add Ingredient
+        </button>
+      </div>
     </div>
 
+    <!-- Instructions -->
     <div class="form-group">
       <label for="instructions">Instructions</label>
-      <textarea
-        class="form-control"
-        id="instructions"
-        name="instructions"
-        rows="5"
-        ngModel
-        #instructions="ngModel"
-      ></textarea>
+      <div formArrayName="instructions">
+        <div
+          *ngFor="let instruction of instructions.controls; let i = index"
+          class="input-group mb-2"
+        >
+          <input
+            type="text"
+            class="form-control"
+            [formControlName]="i"
+            placeholder="Step {{ i + 1 }}"
+          />
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="removeInstruction(i)"
+          >
+            -
+          </button>
+        </div>
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="addInstruction()"
+        >
+          Add Instruction
+        </button>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
