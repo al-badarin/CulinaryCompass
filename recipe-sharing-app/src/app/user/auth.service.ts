@@ -20,7 +20,6 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  // ** IMPLEMENTED BY ME **
   register(
     username: string,
     email: string,
@@ -35,27 +34,27 @@ export class AuthService {
     });
   }
 
-  login(data: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/login`, data).pipe(
-      tap((response: any) => {
-        localStorage.setItem('token', response.token);
-      })
-    );
+  login(email: string, password: string) {
+    return this.http
+      .post<any>(`${this.baseUrl}/login`, { email, password })
+      .pipe(
+        tap((response) => {
+          localStorage.setItem('token', response.token);
+        })
+      );
   }
 
-  logout(): Observable<any> {
+  logout() {
     localStorage.removeItem('token');
-    return this.http.post<any>(`${this.baseUrl}/logout`, {});
+    return this.http.post<User>(`${this.baseUrl}/logout`, {});
   }
 
-  getProfileInfo(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/profile`);
-  }
+  // TODO: !! 
+  // getProfileInfo(): Observable<any> {
+  //   return this.http.get<any>(`${this.baseUrl}/profile`);
+  // }
 
-  editProfileInfo(data: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/profile`, data);
-  }
-
-  // *** IMPLEMENTED FROM WORKSHOP ***
-  //...
+  // editProfileInfo(data: any): Observable<any> {
+  //   return this.http.put<any>(`${this.baseUrl}/profile`, data);
+  // }
 }
