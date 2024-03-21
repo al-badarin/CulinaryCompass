@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RecipeListComponent } from './recipe-list/recipe-list.component';
-import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
+import { RecipeDetailsComponent } from './recipe/recipe-details/recipe-details.component';
 import { HomeComponent } from './core/home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { RegisterComponent } from './user/register/register.component';
+import { LoginComponent } from './user/login/login.component';
+import { AddRecipeComponent } from './recipe/add-recipe/add-recipe.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
