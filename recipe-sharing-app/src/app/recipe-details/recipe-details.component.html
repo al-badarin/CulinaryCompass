@@ -1,22 +1,22 @@
-<!-- h1 for test view -->
+<!-- h1 for test view --> 
 <h1>RECIPE DETAILS</h1>
 
-<div *ngIf="recipe" class="container">
-  <h2>{{ recipe.title }}</h2>
+<div class="container">
+  <h2>{{ recipe?.title }}</h2>
+  <p>{{ recipe?.description }}</p>
   <img
-    [src]="recipe.imageUrl"
-    alt="{{ recipe.title }}"
+    [src]="recipe?.imageUrl"
+    alt="{{ recipe?.title }}"
     class="img-fluid mb-3"
   />
-  <p>{{ recipe.description }}</p>
 
   <h3>Ingredients:</h3>
   <ul>
-    <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+    <li *ngFor="let ingredient of recipe?.ingredients">{{ ingredient }}</li>
   </ul>
 
   <h3>Instructions:</h3>
   <ol>
-    <li *ngFor="let instruction of recipe.instructions">{{ instruction }}</li>
+    <li *ngFor="let instruction of recipe?.instructions">{{ instruction }}</li>
   </ol>
 </div>
