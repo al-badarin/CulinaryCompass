@@ -1,31 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
-import { RecipeDetailsComponent } from './recipe/recipe-details/recipe-details.component';
 import { HomeComponent } from './core/home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { RegisterComponent } from './user/register/register.component';
-import { LoginComponent } from './user/login/login.component';
-import { AddRecipeComponent } from './recipe/add-recipe/add-recipe.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'recipes', component: RecipeListComponent },
-  { path: 'recipes/:id', component: RecipeDetailsComponent },
-  { path: 'add-recipe', component: AddRecipeComponent },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/home',
+  },
+  { path: 'home', component: HomeComponent },
+  {
+    path: 'auth',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
+  {
+    path: 'recipes',
+    loadChildren: () => import('./recipe/recipe.module').then((m) => m.RecipeModule),
+  },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  {path: 'error-404', component: ErrorPageComponent},
-  { path: '**', redirectTo: '/error-404' } 
+  { path: 'error-404', component: ErrorPageComponent },
+  { path: '**', redirectTo: '/error-404' },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
