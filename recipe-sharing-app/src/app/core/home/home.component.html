@@ -2,7 +2,11 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-banner">
-      <img src="../../../assets/home-hero-cover-img-2.jpg" class="img-fluid" alt="Hero Banner" />
+      <img
+        src="../../../assets/home-hero-cover-img-2.jpg"
+        class="img-fluid"
+        alt="Hero Banner"
+      />
       <div class="hero-content">
         <h1>Welcome to CulinaryCompass!</h1>
         <p class="lead">Discover Delicious Recipes for Every Occasion</p>
@@ -11,82 +15,73 @@
   </section>
 
   <!-- Recipe Gallery Section -->
-  <section class="recipe-gallery mt-5">
-    <div class="row">
-      <div class="col-md-12">
-        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="row">
-                <div
-                  class="col-md-2 mb-4"
-                  *ngFor="let recipe of recipes.slice(0, 5)"
-                >
-                  <div class="card">
-                    <img
-                      class="card-img-top"
-                      [src]="recipe.imageUrl"
-                      [alt]="recipe.title"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">{{ recipe.title }}</h5>
-                      <p class="card-text">{{ recipe.description }}</p>
-                      <a
-                        [routerLink]="['/recipes', recipe.id]"
-                        class="btn btn-primary"
-                        >View Recipe</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="row">
-                <div
-                  class="col-md-2 mb-4"
-                  *ngFor="let recipe of recipes.slice(5, 10)"
-                >
-                  <div class="card">
-                    <img
-                      class="card-img-top"
-                      [src]="recipe.imageUrl"
-                      [alt]="recipe.title"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">{{ recipe.title }}</h5>
-                      <p class="card-text">{{ recipe.description }}</p>
-                      <a
-                        [routerLink]="['/recipes', recipe.id]"
-                        class="btn btn-primary"
-                        >View Recipe</a
-                      >
-                    </div>
-                  </div>
+  <div class="container">
+    <h2>Recent Recipes</h2>
+    <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md" *ngFor="let recipe of recipes.slice(0, 3)">
+              <div class="card">
+                <img
+                  class="card-img-top"
+                  [src]="recipe.imageUrl"
+                  [alt]="recipe.title"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{ recipe.title }}</h5>
+                  <p class="card-text">{{ recipe.description }}</p>
+                  <a
+                    [routerLink]="['/recipes', recipe.id]"
+                    class="btn btn-primary"
+                    >View Recipe</a
+                  >
                 </div>
               </div>
             </div>
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#recipeCarousel"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#recipeCarousel"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+        </div>
+        <div class="carousel-item" *ngIf="recipes.length > 3">
+          <div class="row">
+            <div class="col-md" *ngFor="let recipe of recipes.slice(3, 6)">
+              <div class="card">
+                <img
+                  class="card-img-top"
+                  [src]="recipe.imageUrl"
+                  [alt]="recipe.title"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{ recipe.title }}</h5>
+                  <p class="card-text">{{ recipe.description }}</p>
+                  <a
+                    [routerLink]="['/recipes', recipe.id]"
+                    class="btn btn-primary"
+                    >View Recipe</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#recipeCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#recipeCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-  </section>
+  </div>
 </div>
