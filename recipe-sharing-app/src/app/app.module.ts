@@ -8,10 +8,9 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeModule } from './recipe/recipe.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,6 @@ import { RecipeModule } from './recipe/recipe.module';
     AboutComponent,
     ContactComponent,
     ErrorPageComponent,
-    LoginComponent,
-    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +26,10 @@ import { RecipeModule } from './recipe/recipe.module';
     FormsModule,
     ReactiveFormsModule,
     RecipeModule,
+    UserModule,
     AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
