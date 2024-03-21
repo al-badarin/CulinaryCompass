@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 @NgModule({
@@ -32,6 +32,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     HttpClientModule,
     CoreModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
   ],
   providers: [],
