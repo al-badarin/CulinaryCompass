@@ -40,3 +40,19 @@
   background-color: #0056b3;
 }
 
+/* ERRORS */
+p.error {
+  text-align: left;
+  border-radius: 0.3em;
+  color: red;
+  padding-top: 0;
+  font-style: italic;
+}
+
+.input-error {
+  border-left: 2px solid red;
+}
+
+.input-success {
+  border-left: 2px solid green;
+}
