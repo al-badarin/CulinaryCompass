@@ -1,8 +1,8 @@
-<div class="container">
-  <h2>Add New Recipe</h2>
+<div class="container mt-5">
+  <h2 class="mb-4">Add New Recipe</h2>
   <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="title">Recipe Title</label>
+    <div class="mb-3">
+      <label for="title" class="form-label">Recipe Title</label>
       <input
         type="text"
         class="form-control"
@@ -12,8 +12,8 @@
       />
     </div>
 
-    <div class="form-group">
-      <label for="description">Description</label>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
       <textarea
         class="form-control"
         id="description"
@@ -22,8 +22,8 @@
       ></textarea>
     </div>
 
-    <div class="form-group">
-      <label for="image">Image URL</label>
+    <div class="mb-3">
+      <label for="image" class="form-label">Image URL</label>
       <input
         type="text"
         class="form-control"
@@ -33,8 +33,8 @@
     </div>
 
     <!-- Ingredients -->
-    <div class="form-group">
-      <label for="ingredients">Ingredients</label>
+    <div class="mb-3">
+      <label class="form-label">Ingredients</label>
       <div formArrayName="ingredients">
         <div
           *ngFor="let ingredient of ingredients.controls; let i = index"
@@ -47,11 +47,12 @@
             placeholder="Ingredient {{ i + 1 }}"
           />
           <button
+            *ngIf="ingredients.length > 1"
             type="button"
-            class="btn btn-danger"
+            class="btn btn-danger ms-2"
             (click)="removeIngredient(i)"
           >
-            -
+            Remove
           </button>
         </div>
         <button type="button" class="btn btn-success" (click)="addIngredient()">
@@ -61,8 +62,8 @@
     </div>
 
     <!-- Instructions -->
-    <div class="form-group">
-      <label for="instructions">Instructions</label>
+    <div class="mb-3">
+      <label class="form-label">Instructions</label>
       <div formArrayName="instructions">
         <div
           *ngFor="let instruction of instructions.controls; let i = index"
@@ -75,11 +76,12 @@
             placeholder="Step {{ i + 1 }}"
           />
           <button
+            *ngIf="instructions.length > 1"
             type="button"
-            class="btn btn-danger"
+            class="btn btn-danger ms-2"
             (click)="removeInstruction(i)"
           >
-            -
+            Remove
           </button>
         </div>
         <button
