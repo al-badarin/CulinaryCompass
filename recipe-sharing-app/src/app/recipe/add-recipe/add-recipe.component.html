@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <h2 class="mb-4">Add New Recipe</h2>
   <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <!-- Recipe Title input -->
     <div class="mb-3">
       <label for="title" class="form-label">Recipe Title</label>
       <input
@@ -10,6 +11,13 @@
         formControlName="title"
         required
       />
+
+      <!-- Error message for title -->
+      <ng-container *ngIf="recipeForm.get('title')?.touched">
+        <p class="error" *ngIf="recipeForm.get('title')?.errors?.['required']">
+          Recipe Title is required!
+        </p>
+      </ng-container>
     </div>
 
     <div class="mb-3">
