@@ -24,6 +24,8 @@ export class RegisterComponent {
     ),
   });
 
+  errorMessage: string = '';
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -32,6 +34,7 @@ export class RegisterComponent {
 
   register(): void {
     if (this.form.invalid) {
+      this.errorMessage = 'Please fill out all required fields correctly.';
       return;
     }
 
@@ -50,6 +53,8 @@ export class RegisterComponent {
         },
         (error) => {
           console.error('Registration error:', error);
+          this.errorMessage =
+            'An error occurred during registration. Please try again.';
         }
       );
   }
