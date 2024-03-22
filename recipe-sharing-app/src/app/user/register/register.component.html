@@ -1,5 +1,9 @@
 <div class="container mt-5">
   <h2>Register</h2>
+
+  <!-- Display error message if there is one -->
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  
   <form [formGroup]="form" (ngSubmit)="register()">
     <!-- USERNAME INPUT-->
     <div class="mb-3">
