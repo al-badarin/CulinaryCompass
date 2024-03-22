@@ -9,6 +9,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  errorMessage: string = '';
+  hasError = false;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   login(form: NgForm): void {
@@ -26,6 +29,8 @@ export class LoginComponent {
       },
       (error) => {
         console.error('Login error:', error);
+        this.errorMessage = 'Invalid email or password. Please try again.';
+        this.hasError = true;
       }
     );
   }
