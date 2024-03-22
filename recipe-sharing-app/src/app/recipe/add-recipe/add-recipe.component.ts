@@ -20,10 +20,10 @@ export class AddRecipeComponent {
   ) {
     this.recipeForm = this.fb.group({
       title: ['', Validators.required],
-      description: [''],
-      image: [''],
-      ingredients: this.fb.array([this.fb.control('')]),
-      instructions: this.fb.array([this.fb.control('')]),
+      description: ['', Validators.required],
+      image: ['', Validators.required],
+      ingredients: this.fb.array([this.fb.control('', Validators.required)]),
+      instructions: this.fb.array([this.fb.control('', Validators.required)]),
     });
   }
 
@@ -44,7 +44,7 @@ export class AddRecipeComponent {
   }
 
   addIngredient() {
-    this.ingredients.push(this.fb.control(''));
+    this.ingredients.push(this.fb.control('', Validators.required));
   }
 
   removeIngredient(index: number) {
@@ -52,7 +52,7 @@ export class AddRecipeComponent {
   }
 
   addInstruction() {
-    this.instructions.push(this.fb.control(''));
+    this.instructions.push(this.fb.control('', Validators.required));
   }
 
   removeInstruction(index: number) {
