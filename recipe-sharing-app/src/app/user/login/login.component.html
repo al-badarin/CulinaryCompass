@@ -19,17 +19,17 @@
           'input-error': (inputEmail.invalid || hasError) && inputEmail.touched
         }"
       />
-    </div>
 
-    <!-- EMAIL VALIDATIONS -->
-    <ng-container *ngIf="inputEmail.touched">
-      <p class="error" *ngIf="inputEmail.errors?.['required']">
-        Email is required!
-      </p>
-      <p class="error" *ngIf="inputEmail.errors?.['email']">
-        Email is not valid!
-      </p>
-    </ng-container>
+      <!-- EMAIL VALIDATIONS -->
+      <ng-container *ngIf="inputEmail.touched">
+        <p class="error" *ngIf="inputEmail.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="inputEmail.errors?.['email']">
+          Email is not valid!
+        </p>
+      </ng-container>
+    </div>
 
     <!-- PASSWORD INPUT -->
     <div class="mb-3">
@@ -51,18 +51,18 @@
             (inputPassword.invalid || hasError) && inputPassword.touched
         }"
       />
-    </div>
 
-    <!-- PASSWORD VALIDATIONS -->
-    <ng-container *ngIf="inputPassword.touched">
-      <p class="error" *ngIf="inputPassword.errors?.['required']">
-        Password is required!
-      </p>
-      <p class="error" *ngIf="inputPassword.errors?.['minlength']">
-        Password must be at least
-        {{inputPassword.errors?.['minlength']['requiredLength']}} characters!
-      </p>
-    </ng-container>
+      <!-- PASSWORD VALIDATIONS -->
+      <ng-container *ngIf="inputPassword.touched">
+        <p class="error" *ngIf="inputPassword.errors?.['required']">
+          Password is required!
+        </p>
+        <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+          Password must be at least
+          {{inputPassword.errors?.['minlength']['requiredLength']}} characters!
+        </p>
+      </ng-container>
+    </div>
 
     <!-- ACTION -->
     <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
@@ -74,4 +74,9 @@
   <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
     {{ errorMessage }}
   </div>
+
+  <p class="text-center">
+    Have an account?
+    <a routerLink="/auth/register">Register</a>
+  </p>
 </div>
