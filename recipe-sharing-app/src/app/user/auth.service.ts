@@ -49,7 +49,7 @@ export class AuthService {
     return this.http.post<User>(`${this.baseUrl}/logout`, {});
   }
 
-  // TODO: !! 
+  // TODO: !!
   // getProfileInfo(): Observable<any> {
   //   return this.http.get<any>(`${this.baseUrl}/profile`);
   // }
