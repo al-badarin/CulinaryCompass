@@ -3,7 +3,7 @@
 
   <!-- Display error message if there is one -->
   <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-  
+
   <form [formGroup]="form" (ngSubmit)="register()">
     <!-- USERNAME INPUT-->
     <div class="mb-3">
@@ -22,17 +22,17 @@
             form.get('username')?.invalid && form.get('username')?.touched
         }"
       />
-    </div>
 
-    <!-- USERNAME VALIDATIONS-->
-    <ng-container *ngIf="form.get('username')?.touched">
-      <p class="error" *ngIf="form.get('username')?.errors?.['required']">
-        Username is required!
-      </p>
-      <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
-        Username's length should be at least 5 characters!
-      </p>
-    </ng-container>
+      <!-- USERNAME VALIDATIONS-->
+      <ng-container *ngIf="form.get('username')?.touched">
+        <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+          Username is required!
+        </p>
+        <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+          Username's length should be at least 5 characters!
+        </p>
+      </ng-container>
+    </div>
 
     <!-- EMAIL INPUT-->
     <div class="mb-3">
@@ -51,17 +51,17 @@
             form.get('email')?.invalid && form.get('email')?.touched
         }"
       />
-    </div>
 
-    <!-- EMAIL VALIDATIONS-->
-    <ng-container *ngIf="form.get('email')?.touched">
-      <p class="error" *ngIf="form.get('email')?.errors?.['required']">
-        Email is required!
-      </p>
-      <p class="error" *ngIf="form.get('email')?.errors?.['email']">
-        Email is not valid!
-      </p>
-    </ng-container>
+      <!-- EMAIL VALIDATIONS-->
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="form.get('email')?.errors?.['email']">
+          Email is not valid!
+        </p>
+      </ng-container>
+    </div>
 
     <ng-container formGroupName="passGroup">
       <!-- PASSWORD INPUT-->
@@ -76,32 +76,34 @@
           name="password"
           [ngClass]="{
             'input-success':
-              form.get('password')?.valid && form.get('password')?.touched,
+              form.get('passGroup')?.get('password')?.valid &&
+              form.get('passGroup')?.get('password')?.touched,
             'input-error':
-              form.get('password')?.invalid && form.get('password')?.touched
+              form.get('passGroup')?.get('password')?.invalid &&
+              form.get('passGroup')?.get('password')?.touched
           }"
         />
-      </div>
 
-      <!-- PASSWORD VALIDATIONS-->
-      <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
-        <p
-          class="error"
-          *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']"
-        >
-          Password is required!
-        </p>
-        <p
-          class="error"
-          *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']"
-        >
-          Password must be at least
-          {{
+        <!-- PASSWORD VALIDATIONS-->
+        <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+          <p
+            class="error"
+            *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']"
+          >
+            Password is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']"
+          >
+            Password must be at least
+            {{
           form.get('passGroup')?.get('password')?.errors?.['minlength']?.['requiredLength']
-          }}
-          characters!
-        </p>
-      </ng-container>
+            }}
+            characters!
+          </p>
+        </ng-container>
+      </div>
 
       <!-- RE-PASSWORD INPUT-->
       <div class="mb-3">
@@ -113,36 +115,38 @@
           placeholder="Repeat password"
           formControlName="repeatPassword"
           name="repeatPassword"
-          [ngClass]="{
-            'input-success':
-              form.get('repeatPassword')?.valid &&
-              form.get('repeatPassword')?.touched,
-            'input-error':
-              form.get('repeatPassword')?.invalid &&
-              form.get('repeatPassword')?.touched
-          }"
         />
-      </div>
+        <!-- [ngClass]="{
+            'input-success':
+              form.get('passGroup')?.get('repeatPassword')?.valid &&
+              form.get('passGroup')?.get('repeatPassword')?.touched,
+            'input-error':
+              form.get('passGroup')?.get('repeatPassword')?.invalid &&
+              form.get('passGroup')?.get('repeatPassword')?.touched
+          }" -->
 
-      <!-- RE-PASSWORD VALIDATIONS-->
-      <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
-        <p
-          class="error"
-          *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator'] ||
-             form.get('passGroup')?.get('rePassword')?.errors?.['required']"
+        <!-- RE-PASSWORD VALIDATIONS-->
+        <ng-container
+          *ngIf="form.get('passGroup')?.get('repeatPassword')?.touched"
         >
-          Repeat Password does not match password!
-        </p>
-      </ng-container>
+          <p
+            class="error"
+            *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator'] ||
+             form.get('passGroup')?.get('repeatPassword')?.errors?.['required']"
+          >
+            Repeat Password does not match password!
+          </p>
+        </ng-container>
+      </div>
     </ng-container>
 
     <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
       Register
     </button>
-
-    <p class="text-center">
-      Have an account?
-      <a routerLink="/auth/login">Log In</a>
-    </p>
   </form>
+
+  <p class="text-center">
+    Have an account?
+    <a routerLink="/auth/login">Log In</a>
+  </p>
 </div>
