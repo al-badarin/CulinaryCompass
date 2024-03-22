@@ -40,6 +40,10 @@
   background-color: #0056b3;
 }
 
+.text-center {
+  margin-top: 1rem;
+}
+
 /* ERRORS */
 p.error {
   text-align: left;
