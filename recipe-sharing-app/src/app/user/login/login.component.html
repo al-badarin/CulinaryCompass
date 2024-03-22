@@ -15,8 +15,8 @@
         email
         required
         [ngClass]="{
-          'input-success': inputEmail.valid && inputEmail.touched,
-          'input-error': inputEmail.invalid && inputEmail.touched
+          'input-success': inputEmail.valid && inputEmail.touched && !hasError,
+          'input-error': (inputEmail.invalid || hasError) && inputEmail.touched
         }"
       />
     </div>
@@ -45,8 +45,10 @@
         required
         minlength="5"
         [ngClass]="{
-          'input-success': inputPassword.valid && inputPassword.touched,
-          'input-error': inputPassword.invalid && inputPassword.touched
+          'input-success':
+            inputPassword.valid && inputPassword.touched && !hasError,
+          'input-error':
+            (inputPassword.invalid || hasError) && inputPassword.touched
         }"
       />
     </div>
@@ -67,4 +69,9 @@
       Login
     </button>
   </form>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+    {{ errorMessage }}
+  </div>
 </div>
