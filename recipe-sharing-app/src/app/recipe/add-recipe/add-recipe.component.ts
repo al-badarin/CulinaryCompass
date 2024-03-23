@@ -73,7 +73,7 @@ export class AddRecipeComponent {
         (response) => {
           console.log('Recipe added successfully:', response);
           this.recipeForm.reset();
-          this.router.navigate(['/recipes']);
+          this.router.navigate(['/recipes/recipes-list']);
         },
         (error) => {
           console.error('Error adding recipe:', error);
