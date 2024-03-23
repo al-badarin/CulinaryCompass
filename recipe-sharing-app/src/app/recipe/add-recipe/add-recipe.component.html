@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h2 class="mb-4">Add New Recipe</h2>
   <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-    <!-- Recipe Title input -->
+    <!-- Recipe TITLE input -->
     <div class="mb-3">
       <label for="title" class="form-label">Recipe Title</label>
       <input
@@ -20,6 +20,7 @@
       </ng-container>
     </div>
 
+    <!-- Recipe DESCRIPTION input -->
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
       <textarea
@@ -28,8 +29,19 @@
         formControlName="description"
         rows="3"
       ></textarea>
+
+      <!-- Error message for Description -->
+      <ng-container *ngIf="recipeForm.get('description')?.touched">
+        <p
+          class="error"
+          *ngIf="recipeForm.get('description')?.errors?.['required']"
+        >
+          Recipe Description is required!
+        </p>
+      </ng-container>
     </div>
 
+    <!-- Recipe IMAGE URL input -->
     <div class="mb-3">
       <label for="image" class="form-label">Image URL</label>
       <input
@@ -38,9 +50,16 @@
         id="image"
         formControlName="image"
       />
+
+      <!-- Error message for Image URL -->
+      <ng-container *ngIf="recipeForm.get('image')?.touched">
+        <p class="error" *ngIf="recipeForm.get('image')?.errors?.['required']">
+          Recipe Image URL is required!
+        </p>
+      </ng-container>
     </div>
 
-    <!-- Ingredients -->
+    <!-- Recipe INGREDIENTS input -->
     <div class="mb-3">
       <label class="form-label">Ingredients</label>
       <div formArrayName="ingredients">
@@ -54,13 +73,31 @@
             [formControlName]="i"
             placeholder="Ingredient {{ i + 1 }}"
           />
+
           <button
             type="button"
             class="btn btn-danger ms-2"
+            *ngIf="ingredients.controls.length > 1"
             (click)="removeIngredient(i)"
           >
             Remove
           </button>
+
+          <!-- Error message for Ingredient -->
+          <ng-container *ngIf="ingredients.controls[i].touched">
+            <p
+              class="error"
+              *ngIf="ingredients.controls[i].hasError('required')"
+            >
+              Recipe Ingredient is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="ingredients.controls[i].hasError('firstLetter')"
+            >
+              First character must be a letter!
+            </p>
+          </ng-container>
         </div>
         <button type="button" class="btn btn-success" (click)="addIngredient()">
           Add Ingredient
@@ -68,7 +105,7 @@
       </div>
     </div>
 
-    <!-- Instructions -->
+    <!-- Recipe INSTRUCTIONS input -->
     <div class="mb-3">
       <label class="form-label">Instructions</label>
       <div formArrayName="instructions">
@@ -85,10 +122,27 @@
           <button
             type="button"
             class="btn btn-danger ms-2"
+            *ngIf="instructions.controls.length > 1"
             (click)="removeInstruction(i)"
           >
             Remove
           </button>
+
+          <!-- Error message for Instruction -->
+          <ng-container *ngIf="instructions.controls[i].touched">
+            <p
+              class="error"
+              *ngIf="instructions.controls[i].hasError('required')"
+            >
+              Recipe Instruction is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="instructions.controls[i].hasError('firstLetter')"
+            >
+              First character must be a letter!
+            </p>
+          </ng-container>
         </div>
         <button
           type="button"
@@ -100,6 +154,12 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button
+      [disabled]="recipeForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
   </form>
 </div>
