@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     this.recipeService.getRecipes().subscribe({
       next: (recipes: Recipe[]) => {
         this.recipes = recipes;
+        console.log(this.recipes);
       },
       error: (error) => {
         console.error('Error fetching recipes:', error);
