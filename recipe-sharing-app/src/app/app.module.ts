@@ -9,8 +9,6 @@ import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RecipeModule } from './recipe/recipe.module';
-import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -27,8 +25,6 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     CoreModule,
     SharedModule,
-    RecipeModule,
-    UserModule,
     AppRoutingModule,
   ],
   providers: [],
