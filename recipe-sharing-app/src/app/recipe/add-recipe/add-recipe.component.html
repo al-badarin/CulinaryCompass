@@ -91,12 +91,12 @@
             >
               Recipe Ingredient is required!
             </p>
-            <p
+            <!-- <p
               class="error"
               *ngIf="ingredients.controls[i].hasError('firstLetter')"
             >
               First character must be a letter!
-            </p>
+            </p> -->
           </ng-container>
         </div>
         <button type="button" class="btn btn-success" (click)="addIngredient()">
