@@ -45,8 +45,11 @@
 }
 
 /* ERRORS */
+button.btn.btn-danger.ms-2{
+  margin-right: 2rem;
+}
+
 p.error {
-  text-align: left;
   border-radius: 0.3em;
   color: red;
   padding-top: 0;
