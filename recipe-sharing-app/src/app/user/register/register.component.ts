@@ -49,7 +49,7 @@ export class RegisterComponent {
       .subscribe(
         (response) => {
           console.log('Registration successful!', response);
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/auth/login');
         },
         (error) => {
           console.error('Registration error:', error);

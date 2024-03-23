@@ -25,7 +25,7 @@ export class LoginComponent {
       (response) => {
         console.log('Login successful!', response);
         // TODO: redirect to 'MY PROFILE'
-        this.router.navigateByUrl('/recipes');
+        this.router.navigateByUrl('/recipes/recipes-list');
       },
       (error) => {
         console.error('Login error:', error);
