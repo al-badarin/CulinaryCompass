@@ -30,7 +30,7 @@
                 />
                 <div class="card-body">
                   <h5 class="card-title">{{ recipe.title }}</h5>
-                  <p class="card-text">{{ recipe.description | slice: 30 }}</p>
+                  <p class="card-text">{{ recipe.description | slice: 50 }}</p>
                   <a
                     [routerLink]="['/recipes/details', recipe.id]"
                     class="btn btn-primary"
@@ -52,7 +52,7 @@
                 />
                 <div class="card-body">
                   <h5 class="card-title">{{ recipe.title }}</h5>
-                  <p class="card-text">{{ recipe.description }}</p>
+                  <p class="card-text">{{ recipe.description | slice: 50}}</p>
                   <a
                     [routerLink]="['/recipes', recipe.id]"
                     class="btn btn-primary"
@@ -61,6 +61,8 @@
                 </div>
               </div>
             </div>
+
+            
           </div>
         </div>
       </div>
