@@ -21,9 +21,9 @@ a:hover {
   width: 30%;
 }
 
-.d-flex {
+/* .d-flex {
   width: 24%;
-}
+} */
 
 a.nav-link {
   text-wrap: nowrap;
@@ -43,6 +43,14 @@ a.nav-link {
   align-items: flex-end;
   text-align: center;
 }
+
+#navbarNav.navbar-collapse.collapse.show {
+  margin-top: 1rem;
+}
+
+/* #navbarNav.navbar-collapse.collapse.show ul { */
+/* TODO: style the dropdown menu better */
+/* } */
 
 .d-flex .navbar-nav.ms-auto li a {
   border-radius: 0.5rem;
@@ -68,4 +76,3 @@ a.nav-link {
     text-wrap: nowrap;
   }
 } */
-
