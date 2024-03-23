@@ -26,8 +26,6 @@ export class RecipeDetailsComponent implements OnInit {
     if (id) {
       this.recipeService.getRecipeDetails(id).subscribe(
         (recipe) => {
-          // TODO:!!! - DONE!
-          // this.ingredients = recipe?.ingredients.split('.');
           this.recipe = recipe;
         },
         (error) => {
