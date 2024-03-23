@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { firstLetterValidator } from 'src/app/shared/validators/firstLetterValidator';
 
 @Component({
   selector: 'app-add-recipe',
@@ -10,8 +11,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddRecipeComponent {
   recipeForm: FormGroup;
-  // showIngredients: boolean = false;
-  // showInstructions: boolean = false;
+  errorMessage: string = '';
 
   constructor(
     private recipeService: RecipeService,
@@ -22,18 +22,14 @@ export class AddRecipeComponent {
       title: ['', Validators.required],
       description: ['', Validators.required],
       image: ['', Validators.required],
-      ingredients: this.fb.array([this.fb.control('', Validators.required)]),
-      instructions: this.fb.array([this.fb.control('', Validators.required)]),
+      ingredients: this.fb.array([
+        this.fb.control('', [Validators.required, firstLetterValidator()]),
+      ]),
+      instructions: this.fb.array([
+        this.fb.control('', [Validators.required, firstLetterValidator()]),
+      ]),
     });
   }
-
-  // toggleIngredients(): void {
-  //   this.showIngredients = !this.showIngredients;
-  // }
-
-  // toggleInstructions(): void {
-  //   this.showInstructions = !this.showInstructions;
-  // }
 
   get ingredients() {
     return this.recipeForm?.get('ingredients') as FormArray;
@@ -81,6 +77,8 @@ export class AddRecipeComponent {
         },
         (error) => {
           console.error('Error adding recipe:', error);
+          this.errorMessage =
+            'An error occurred during adding a new recipe. Please try again.';
         }
       );
     } else {
