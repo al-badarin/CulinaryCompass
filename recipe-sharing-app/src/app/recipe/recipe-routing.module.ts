@@ -7,22 +7,16 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 const routes: Routes = [
   {
-    path: 'recipes',
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        component: RecipeListComponent,
-      },
-      {
-        path: ':id',
-        component: RecipeDetailsComponent,
-      },
-      //   TODO:
-      // *add paths to 'recipes/:id/edit'
-      // *add paths to 'recipes/:id/delete'
-    ],
+    path: 'recipes-list',
+    component: RecipeListComponent,
   },
+  {
+    path: 'details/:id',
+    component: RecipeDetailsComponent,
+  },
+  //   TODO:
+  // *add paths to 'recipes/:id/edit'
+  // *add paths to 'recipes/:id/delete'
   {
     path: 'add-recipe',
     component: AddRecipeComponent,

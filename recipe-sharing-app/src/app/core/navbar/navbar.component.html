@@ -13,13 +13,13 @@
           <a class="nav-link" routerLink="/auth/register">Register</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="/profile">My Profile</a>
+          <a class="nav-link" routerLink="/auth/profile">My Profile</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
           <a class="nav-link" (click)="logout()">Logout</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="/add-recipe">Add Recipe</a>
+          <a class="nav-link" routerLink="/recipes/add-recipe">Add Recipe</a>
         </li>
       </ul>
     </div>
@@ -44,7 +44,7 @@
           <a class="nav-link" routerLink="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/recipes">Recipes</a>
+          <a class="nav-link" routerLink="/recipes/recipes-list">Recipes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/about">About</a>
