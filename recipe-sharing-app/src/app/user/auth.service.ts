@@ -3,6 +3,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { Recipe } from '../models/recipe.model';
 
 @Injectable({
   providedIn: 'root',
@@ -68,6 +69,39 @@ export class AuthService implements OnDestroy {
     return this.http
       .put<User>('/api/users/profile', { username, email })
       .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  // USER'S RECIPES
+  getUserRecipesFromCookie(): Recipe[] {
+    const userCookie = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('user='));
+
+    if (userCookie) {
+      const userData = JSON.parse(decodeURIComponent(userCookie.split('=')[1]));
+      const userPosts: Recipe[] = userData.posts; // Assuming 'posts' contains the recipes
+      return userPosts;
+    } else {
+      return [];
+    }
+  }
+
+  // GET USER'S ID
+  getUserId(): string | undefined {
+    const userCookie = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('user='));
+
+    if (userCookie) {
+      const jwt = userCookie.split('=')[1];
+      const [, payloadBase64] = jwt.split('.');
+      const payload = JSON.parse(atob(payloadBase64));
+      const userId = payload.id;
+
+      return userId;
+    }
+
+    return undefined;
   }
 
   ngOnDestroy(): void {
