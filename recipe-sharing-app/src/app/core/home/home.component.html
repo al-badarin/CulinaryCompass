@@ -54,7 +54,7 @@
                   <h5 class="card-title">{{ recipe.title }}</h5>
                   <p class="card-text">{{ recipe.description | slice: 50}}</p>
                   <a
-                    [routerLink]="['/recipes', recipe.id]"
+                    [routerLink]="['/recipes/details', recipe.id]"
                     class="btn btn-primary"
                     >View Recipe</a
                   >
