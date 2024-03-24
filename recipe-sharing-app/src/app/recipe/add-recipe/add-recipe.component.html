@@ -162,4 +162,7 @@
       Submit
     </button>
   </form>
+
+  <!-- Display error message if there is one -->
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
 </div>
