@@ -14,16 +14,17 @@ export class NavbarComponent {
   loggedInUser: User | null = null;
 
   get isLoggedIn(): boolean {
-    return this.authService.isLoggedIn();
+    return this.authService.isLoggedIn;
   }
 
   logout(): void {
     this.authService.logout().subscribe(
       () => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/auth/login');
       },
       (error) => {
         console.error('Logout Error:', error);
+        this.router.navigateByUrl('/auth/login');
       }
     );
   }
