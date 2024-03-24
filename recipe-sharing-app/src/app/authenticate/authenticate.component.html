@@ -1,1 +1,3 @@
-<ng-content></ng-content>
+<!-- TODO: add loader spinner -->
+<!-- <app-loader *ngIf="isAuthenticating" /> -->
+<ng-content *ngIf="!isAuthenticating" />
