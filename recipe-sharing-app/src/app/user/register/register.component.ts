@@ -25,7 +25,7 @@ export class RegisterComponent {
   });
 
   errorMessage: string = '';
-
+ 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
