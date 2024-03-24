@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Recipe } from '../models/recipe.model';
 import { FirestoreRecipe } from '../models/FirestoreRecipe.model';
 
@@ -43,6 +43,12 @@ export class RecipeService {
             ),
           };
         });
+      }),
+      catchError((error) => {
+        console.error('Error fetching recipes:', error);
+        return throwError(
+          'Something went wrong while fetching recipes. Please try again later.'
+        );
       })
     );
   }
@@ -68,31 +74,46 @@ export class RecipeService {
               instruction.stringValue || ''
           ),
         };
+      }),
+      catchError((error) => {
+        console.error('Error fetching recipes:', error);
+        return throwError(
+          'Something went wrong while fetching recipes. Please try again later.'
+        );
       })
     );
   }
 
   addRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.post<Recipe>(this.baseUrl, {
-      fields: {
-        title: { stringValue: recipe.title },
-        description: { stringValue: recipe.description },
-        imageUrl: { stringValue: recipe.imageUrl },
-        ingredients: {
-          arrayValue: {
-            values: recipe.ingredients.map((ingredient) => ({
-              stringValue: ingredient,
-            })),
+    return this.http
+      .post<Recipe>(this.baseUrl, {
+        fields: {
+          title: { stringValue: recipe.title },
+          description: { stringValue: recipe.description },
+          imageUrl: { stringValue: recipe.imageUrl },
+          ingredients: {
+            arrayValue: {
+              values: recipe.ingredients.map((ingredient) => ({
+                stringValue: ingredient,
+              })),
+            },
+          },
+          instructions: {
+            arrayValue: {
+              values: recipe.instructions.map((instruction) => ({
+                stringValue: instruction,
+              })),
+            },
           },
         },
-        instructions: {
-          arrayValue: {
-            values: recipe.instructions.map((instruction) => ({
-              stringValue: instruction,
-            })),
-          },
-        },
-      },
-    });
+      })
+      .pipe(
+        catchError((error) => {
+          console.error('Error adding recipe:', error);
+          return throwError(
+            'Something went wrong while adding the recipe. Please try again later.'
+          );
+        })
+      );
   }
 }
