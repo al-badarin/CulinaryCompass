@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:3000/api';
-
   user: User | undefined;
   USER_KEY = '[user]';
 
