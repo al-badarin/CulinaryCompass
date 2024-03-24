@@ -1,0 +1,22 @@
+<div *ngIf="userRecipes && userRecipes.length > 0">
+  <!-- TODO:! -->
+  <h2>{{ user?.username }}'s Recipes</h2>
+  <div class="recipe-list">
+    <div *ngFor="let recipe of userRecipes" class="recipe-card">
+      <!-- Display Recipe Details -->
+      <h3>{{ recipe.title }}</h3>
+      <p>{{ recipe.description }}</p>
+      <ul>
+        <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+      </ul>
+      <ol>
+        <li *ngFor="let instruction of recipe.instructions">
+          {{ instruction }}
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+<div *ngIf="!userRecipes || userRecipes.length === 0">
+  <p>No recipes found.</p>
+</div>
