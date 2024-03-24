@@ -2,7 +2,8 @@
   <h1>Contact Us</h1>
   <p>Feel free to reach out to us for any inquiries or feedback!</p>
 
-  <form>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <!-- NAME INPUT -->
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
       <input
@@ -11,8 +12,27 @@
         id="name"
         name="name"
         placeholder="Enter your name"
+        formControlName="name"
+        required
+        [ngClass]="{
+          'input-success':
+            contactForm.get('name')?.valid &&
+            contactForm.get('name')?.touched,
+          'input-error':
+            contactForm.get('name')?.invalid &&
+            contactForm.get('name')?.touched
+        }"
       />
+
+      <!-- Error message for NAME -->
+      <ng-container *ngIf="contactForm.get('name')?.touched">
+        <p class="error" *ngIf="contactForm.get('name')?.errors?.['required']">
+          Your name is required!
+        </p>
+      </ng-container>
     </div>
+
+    <!-- EMAIL INPUT -->
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
       <input
@@ -21,8 +41,30 @@
         id="email"
         name="email"
         placeholder="Enter your email"
+        formControlName="email"
+        name="email"
+        [ngClass]="{
+          'input-success':
+            contactForm.get('email')?.valid &&
+            contactForm.get('email')?.touched,
+          'input-error':
+            contactForm.get('email')?.invalid &&
+            contactForm.get('email')?.touched
+        }"
       />
+
+      <!-- EMAIL VALIDATIONS-->
+      <ng-container *ngIf="contactForm.get('email')?.touched">
+        <p class="error" *ngIf="contactForm.get('email')?.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="contactForm.get('email')?.errors?.['email']">
+          Email is not valid!
+        </p>
+      </ng-container>
     </div>
+
+    <!-- MESSAGE INPUT -->
     <div class="mb-3">
       <label for="message" class="form-label">Message</label>
       <textarea
@@ -31,8 +73,35 @@
         name="message"
         rows="4"
         placeholder="Enter your message"
+        formControlName="message"
+        required
+        [ngClass]="{
+          'input-success':
+            contactForm.get('message')?.valid &&
+            contactForm.get('message')?.touched,
+          'input-error':
+            contactForm.get('message')?.invalid &&
+            contactForm.get('message')?.touched
+        }"
       ></textarea>
+
+      <!-- Error message for MESSAGE INPUT -->
+      <ng-container *ngIf="contactForm.get('message')?.touched">
+        <p class="error" *ngIf="contactForm.get('message')?.errors?.['required']">
+          Message is required!
+        </p>
+      </ng-container>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <button
+      [disabled]="contactForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
   </form>
+
+  <!-- Display error message if there is one -->
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
 </div>
