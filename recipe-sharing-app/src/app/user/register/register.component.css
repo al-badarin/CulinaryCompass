@@ -60,3 +60,7 @@ p.error {
 .input-success {
   border-left: 2px solid green;
 }
+
+.alert.alert-danger {
+  margin-top: 1rem;
+}
