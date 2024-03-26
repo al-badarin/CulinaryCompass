@@ -28,7 +28,7 @@ export class AppInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request);
-    // ?TODO: add catchError() or set it individually?
+    // ?TODO: add catchError() or set it ->individually<-
   }
 }
 
