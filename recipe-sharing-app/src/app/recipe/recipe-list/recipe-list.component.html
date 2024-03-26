@@ -1,5 +1,4 @@
-<!-- h1 for test view -->
-<h1>RECIPE LIST</h1>
+<h1 class="page-title">Explore Delicious Recipes</h1>
 
 <div class="container">
   <div class="row">
@@ -8,7 +7,7 @@
         <img class="card-img-top" [src]="recipe.imageUrl" alt="Recipe Image" />
         <div class="card-body">
           <h5 class="card-title">{{ recipe.title }}</h5>
-          <p class="card-text">{{ recipe.description | slice: 80 }}</p>
+          <p class="card-text">{{ recipe.description | slice : 80 }}</p>
 
           <a
             [routerLink]="['/recipes/details', recipe.id]"
