@@ -1,22 +1,20 @@
-<div *ngIf="userRecipes && userRecipes.length > 0">
-  <!-- TODO:! -->
-  <h2>{{ user?.username }}'s Recipes</h2>
-  <div class="recipe-list">
-    <div *ngFor="let recipe of userRecipes" class="recipe-card">
-      <!-- Display Recipe Details -->
-      <h3>{{ recipe.title }}</h3>
-      <p>{{ recipe.description }}</p>
+<h1>My Profile</h1>
+
+<div *ngIf="userRecipes.length > 0">
+  <ul>
+    <li *ngFor="let userRecipe of userRecipes">
+      <h2>{{ userRecipe.title }}</h2>
+      <p>{{ userRecipe.description }}</p>
+      <img [src]="userRecipe.imageUrl" alt="Recipe Image" *ngIf="userRecipe.imageUrl">
       <ul>
-        <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+        <li *ngFor="let ingredient of userRecipe.ingredients">{{ ingredient }}</li>
       </ul>
-      <ol>
-        <li *ngFor="let instruction of recipe.instructions">
-          {{ instruction }}
-        </li>
-      </ol>
-    </div>
-  </div>
+      <ul>
+        <li *ngFor="let step of userRecipe.instructions">{{ step }}</li>
+      </ul>
+    </li>
+  </ul>
 </div>
-<div *ngIf="!userRecipes || userRecipes.length === 0">
+<div *ngIf="userRecipes.length === 0">
   <p>No recipes found.</p>
 </div>
