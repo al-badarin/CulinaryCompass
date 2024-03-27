@@ -24,8 +24,7 @@ export class LoginComponent {
     this.authService.login(email, password).subscribe(
       (response) => {
         console.log('Login successful!', response);
-        // TODO: redirect to 'MY PROFILE'
-        this.router.navigateByUrl('/recipes/recipes-list');
+        this.router.navigateByUrl('/auth/profile');
       },
       (error) => {
         console.error('Login error:', error);
