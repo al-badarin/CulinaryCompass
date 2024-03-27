@@ -10,7 +10,7 @@
           <p class="card-text">{{ recipe.description | slice : 80 }}</p>
 
           <a
-            [routerLink]="['/recipes/details', recipe.id]"
+            [routerLink]="['/recipes/details', recipe._id]"
             class="btn btn-primary"
             >View Recipe</a
           >
