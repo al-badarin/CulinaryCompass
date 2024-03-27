@@ -13,7 +13,7 @@ export class RecipeDetailsComponent implements OnInit {
   ingredients: string | undefined;
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private recipeService: RecipeService
   ) {}
 
@@ -22,7 +22,8 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   fetchRecipeDetails(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.activatedRoute.snapshot.params['recipeId'];
+
     if (id) {
       this.recipeService.getRecipeDetails(id).subscribe(
         (recipe) => {
