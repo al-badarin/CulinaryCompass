@@ -45,7 +45,7 @@
 }
 
 /* ERRORS */
-button.btn.btn-danger.ms-2{
+button.btn.btn-danger.ms-2 {
   margin-right: 2rem;
 }
 
@@ -62,4 +62,8 @@ p.error {
 
 .input-success {
   border-left: 2px solid green;
+}
+
+.alert.alert-danger {
+  margin-top: 1rem;
 }
