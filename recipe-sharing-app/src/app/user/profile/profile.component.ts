@@ -9,7 +9,7 @@ import { RecipeService } from 'src/app/recipe/recipe.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  userRecipes: Recipe[] = [];
+  recipes: Recipe[] = [];
 
   constructor(
     private authService: AuthService,
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
 
   getMyRecipes() {
     this.recipeService.getMyRecipes().subscribe((recipes) => {
-      this.userRecipes = recipes;
+      this.recipes = recipes;
     });
   }
 }
