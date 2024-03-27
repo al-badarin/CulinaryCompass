@@ -25,9 +25,11 @@ export class RecipeService {
 
   // GET RECIPE'S DETAILS
   getRecipeDetails(recipeId: string) {
-    const url = `/api/recipes/${recipeId}`;
+    console.log(recipeId);
 
-    return this.http.get<Recipe>(url).pipe(
+    // const url = `/api/recipes/details/${recipeId}`;
+
+    return this.http.get<Recipe>(`/api/recipes/details/${recipeId}`).pipe(
       catchError((error) => {
         console.error('Error fetching recipe details:', error);
         return throwError(
