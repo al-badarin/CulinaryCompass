@@ -25,10 +25,6 @@ export class RecipeService {
 
   // GET RECIPE'S DETAILS
   getRecipeDetails(recipeId: string) {
-    console.log(recipeId);
-
-    // const url = `/api/recipes/details/${recipeId}`;
-
     return this.http.get<Recipe>(`/api/recipes/details/${recipeId}`).pipe(
       catchError((error) => {
         console.error('Error fetching recipe details:', error);
@@ -41,8 +37,6 @@ export class RecipeService {
 
   // ADD A RECIPE
   addRecipe(recipeData: Object) {
-    // const { apiUrl } = environment;
-
     return this.http.post<Recipe>(`/api/recipes`, recipeData).pipe(
       catchError((error) => {
         console.error('Error adding recipe:', error);
@@ -56,5 +50,9 @@ export class RecipeService {
   // GET ALL USER'S RECIPES
   getMyRecipes() {
     return this.http.get<Recipe[]>(`/api/recipes/my-recipes`);
+  }
+
+  removeRecipe(recipeId: string) {
+    return this.http.delete(`/api/recipes/details${recipeId}/delete`);
   }
 }
