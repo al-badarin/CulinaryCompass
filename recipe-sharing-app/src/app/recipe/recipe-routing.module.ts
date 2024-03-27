@@ -11,7 +11,7 @@ const routes: Routes = [
     component: RecipeListComponent,
   },
   {
-    path: 'details/:id',
+    path: 'details/:recipeId',
     component: RecipeDetailsComponent,
   },
   //   TODO:
