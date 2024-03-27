@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
@@ -27,8 +27,19 @@ export class AppInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request);
-    // ?TODO: add catchError() or set it ->individually<-
+    return next.handle(request).pipe(
+      catchError((error) => {
+        console.error('HTTP Error:', error);
+
+        if (error.status === 401) {
+          this.router.navigate(['/error-404']);
+        } else {
+          return throwError(error);
+        }
+
+        return [error];
+      })
+    );
   }
 }
 
