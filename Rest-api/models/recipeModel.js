@@ -17,10 +17,10 @@ const recipeSchema = new mongoose.Schema(
     userId: {
       type: ObjectId,
       ref: "User",
-      required: true,
+      // required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: { createdAt: "created_at" } }
 );
 
 module.exports = mongoose.model("Recipe", recipeSchema);
