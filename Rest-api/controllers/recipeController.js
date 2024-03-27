@@ -22,6 +22,16 @@ function getRecipe(req, res, next) {
     .catch(next);
 }
 
+// Get all recipes of the logged-in user
+function getMyRecipes(req, res, next) {
+  const userId = req.user._id;
+
+  recipeModel
+    .find({ userId })
+    .then((recipes) => res.json(recipes))
+    .catch(next);
+}
+
 // Create a new recipe
 function createRecipe(req, res, next) {
   const { title, description, imageUrl, ingredients, instructions } = req.body;
@@ -76,7 +86,7 @@ function updateRecipe(req, res, next) {
       }
       res.status(200).json({ message: "Recipe updated successfully", recipe });
     })
-    .catch(next);
+    .catch(next); 
 }
 
 // Delete a recipe
@@ -107,4 +117,5 @@ module.exports = {
   getRecipe,
   updateRecipe,
   deleteRecipe,
+  getMyRecipes,
 };
