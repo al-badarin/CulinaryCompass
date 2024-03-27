@@ -8,9 +8,9 @@ router.get("/", recipeController.getRecipes);
 router.post("/", auth(), recipeController.createRecipe);
 
 router.get("/my-recipes", auth(), recipeController.getMyRecipes);
-router.get("/:recipeId", recipeController.getRecipe);
-router.put("/:recipeId/edit", auth(), recipeController.updateRecipe);
-router.delete("/:recipeId/delete", auth(), recipeController.deleteRecipe);
+router.get("/details/:recipeId", recipeController.getRecipe);
+router.put("/details/:recipeId/edit", auth(), recipeController.updateRecipe);
+router.delete("/details/:recipeId/delete", auth(), recipeController.deleteRecipe);
 
 module.exports = router;
  
