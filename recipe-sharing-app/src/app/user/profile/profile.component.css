@@ -2,6 +2,8 @@
   max-width: 360px;
   height: 300px;
   margin: 0 auto;
+  /* background-color: #f9f9f9; */
+  background-color: #f8f9fa;
 }
 
 label {
@@ -50,6 +52,55 @@ input#username {
 
 .btn.btn-primary {
   margin-right: 0.3em;
+}
+
+.list-group-item.list-group-item-action {
+  background-color: #f8f9fa;
+  margin-bottom: 0.5em;
+}
+
+.list-group-item.list-group-item-action:hover {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.list-group-item.list-group-item-action:hover h5 {
+  color: #007bff;
+}
+
+.list-group-item.list-group-item-action:hover .btn {
+  opacity: 1;
+}
+
+.list-group-item.list-group-item-action .btn {
+  /* opacity: 0; */
+  transition: opacity 0.3s;
+}
+
+.list-group-item.list-group-item-action .btn:hover {
+  transform: scale(1.05);
+}
+
+.list-group-item.list-group-item-action .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.list-group-item.list-group-item-action .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.list-group-item.list-group-item-action .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.list-group-item.list-group-item-action .btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
 }
 
 /* styles of message if no recipes  */
