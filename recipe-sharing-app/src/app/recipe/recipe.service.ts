@@ -52,7 +52,13 @@ export class RecipeService {
     return this.http.get<Recipe[]>(`/api/recipes/my-recipes`);
   }
 
+  // EDIT A RECIPE
+  updateRecipe(recipe: Recipe) {
+    return this.http.put<Recipe>(`/api/recipes/details/${recipe._id}/edit`, recipe);
+  }
+
+  // DELETE A RECEIPE
   removeRecipe(recipeId: string) {
-    return this.http.delete(`/api/recipes/details${recipeId}/delete`);
+    return this.http.delete(`/api/recipes/details/${recipeId}/delete`);
   }
 }
