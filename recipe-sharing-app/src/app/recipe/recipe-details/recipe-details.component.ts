@@ -3,8 +3,6 @@ import { Recipe } from '../../models/recipe.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { AuthService } from 'src/app/user/auth.service';
-import { User } from 'src/app/models/user';
-import { UserId } from 'src/app/models/user-id';
 
 @Component({
   selector: 'app-recipe-details',
