@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService implements OnDestroy {
-  private user$$ = new BehaviorSubject<User | undefined>(undefined);
-  private user$ = this.user$$.asObservable();
+  public user$$ = new BehaviorSubject<User | undefined>(undefined);
+  public user$ = this.user$$.asObservable();
 
   user: User | undefined;
   USER_KEY = '[user]';
@@ -44,9 +44,11 @@ export class AuthService implements OnDestroy {
 
   // LOGIN
   login(email: string, password: string) {
-    return this.http
-      .post<User>(`/api/login`, { email, password })
-      .pipe(tap((user) => this.user$$.next(user)));
+    return this.http.post<User>(`/api/login`, { email, password }).pipe(
+      tap((user) => {
+        this.user$$.next(user);
+      })
+    );
   }
 
   // LOGOUT
