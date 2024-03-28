@@ -30,23 +30,29 @@
           <!-- ** EDIT MODE -->
           <div *ngIf="isEditMode">
             <form [formGroup]="form" (ngSubmit)="saveProfileHandle()">
+              <!-- username input -->
               <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" formControlName="username" class="form-control" />
-                <div *ngIf="form.get('username')?.touched && form.get('username')?.invalid" class="invalid-feedback">
-                  <div *ngIf="form.get('username')?.errors?.['required']" class="error">Username is required!</div>
-                  <div *ngIf="form.get('username')?.errors?.['minlength']" class="error">Username should be at least 5 characters!</div>
-                </div>
               </div>
 
-              <div class="form-group">
+              <!-- username validations -->
+              <ng-container *ngIf="form.get('username')?.touched" class="invalid-feedback">
+                <div *ngIf="form.get('username')?.errors?.['required']" class="error">Username is required!</div>
+                <div *ngIf="form.get('username')?.errors?.['minlength']" class="error">Username should be at least 5 characters!</div>
+              </ng-container>
+
+              <!-- email input -->
+              <div>
                 <label for="email">Email</label>
                 <input type="email" id="email" formControlName="email" class="form-control" />
-                <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="invalid-feedback">
-                  <div *ngIf="form.get('email')?.errors?.['required']" class="error">Email is required!</div>
-                  <div *ngIf="form.get('email')?.errors?.['email']" class="error">Invalid email format!</div>
-                </div>
               </div>
+
+              <!-- email validations -->
+              <ng-container *ngIf="form.get('email')?.touched" class="invalid-feedback">
+                <div *ngIf="form.get('email')?.errors?.['required']" class="error">Email is required!</div>
+                <div *ngIf="form.get('email')?.errors?.['email']" class="error">Invalid email format!</div>
+              </ng-container>
 
               <div class="btn-container-2">
                 <button type="submit" class="btn btn-success" [disabled]="form.invalid">Save</button>
@@ -58,14 +64,14 @@
       </div>
 
       <!-- ** USER'S RECIPES -->
-      <div class="mt-4">
+      <div class="mt-4" *ngIf="recipes && recipes.length > 0">
         <h3>My Recipes</h3>
         <div class="list-group">
           <a *ngFor="let recipe of recipes" [routerLink]="['/recipes/details', recipe._id]" class="list-group-item list-group-item-action">
             <div class="d-flex justify-content-between">
               <h5 class="mb-1">{{ recipe.title }}</h5>
               <div>
-                <button type="button" class="btn btn-primary mr-2">Edit</button>
+                <a [routerLink]="['/recipes/edit', recipe._id]" class="btn btn-primary">Edit</a>
                 <button type="button" class="btn btn-danger" (click)="onDeleteRecipe(recipe._id)">Delete</button>
               </div>
             </div>
@@ -73,6 +79,15 @@
           </a>
         </div>
       </div>
+
+      <!-- Show message if no recipes -->
+      <div class="mt-4 no-recipes-message" *ngIf="recipes && recipes.length === 0">
+        <div class="no-recipes-content">
+          <p>You haven't published any recipes yet.</p>
+          <p><a [routerLink]="'/recipes/add-recipe'" class="create-recipe-link">Start by creating your first recipe!</a></p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
