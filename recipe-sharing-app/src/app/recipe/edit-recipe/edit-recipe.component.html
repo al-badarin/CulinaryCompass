@@ -1,0 +1,169 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Edit Recipe</h2>
+    <form [formGroup]="editRecipeForm" (ngSubmit)="onSubmit()">
+      <!-- Recipe TITLE input -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Recipe Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+          required
+        />
+  
+        <!-- Error message for title -->
+        <ng-container *ngIf="editRecipeForm.get('title')?.touched">
+          <p class="error" *ngIf="editRecipeForm.get('title')?.errors?.['required']">
+            Recipe Title is required!
+          </p>
+        </ng-container>
+      </div>
+  
+      <!-- Recipe DESCRIPTION input -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          formControlName="description"
+          rows="3"
+        ></textarea>
+  
+        <!-- Error message for Description -->
+        <ng-container *ngIf="editRecipeForm.get('description')?.touched">
+          <p
+            class="error"
+            *ngIf="editRecipeForm.get('description')?.errors?.['required']"
+          >
+            Recipe Description is required!
+          </p>
+        </ng-container>
+      </div>
+  
+      <!-- Recipe IMAGE URL input -->
+      <div class="mb-3">
+        <label for="image" class="form-label">Image URL</label>
+        <input
+          type="text"
+          class="form-control"
+          id="image"
+          formControlName="image"
+        />
+  
+        <!-- Error message for Image URL -->
+        <ng-container *ngIf="editRecipeForm.get('image')?.touched">
+          <p class="error" *ngIf="editRecipeForm.get('image')?.errors?.['required']">
+            Recipe Image URL is required!
+          </p>
+        </ng-container>
+      </div>
+  
+      <!-- Recipe INGREDIENTS input -->
+      <div class="mb-3">
+        <label class="form-label">Ingredients</label>
+        <div formArrayName="ingredients">
+          <div
+            *ngFor="let ingredient of ingredients.controls; let i = index"
+            class="input-group mb-2"
+          >
+            <input
+              type="text"
+              class="form-control"
+              [formControlName]="i"
+              placeholder="Ingredient {{ i + 1 }}"
+            />
+  
+            <button
+              type="button"
+              class="btn btn-danger ms-2"
+              *ngIf="ingredients.controls.length > 1"
+              (click)="removeIngredient(i)"
+            >
+              Remove
+            </button>
+  
+            <!-- Error message for Ingredient -->
+            <ng-container *ngIf="ingredients.controls[i].touched">
+              <p
+                class="error"
+                *ngIf="ingredients.controls[i].hasError('required')"
+              >
+                Recipe Ingredient is required!
+              </p>
+              <!-- <p
+                class="error"
+                *ngIf="ingredients.controls[i].hasError('firstLetter')"
+              >
+                First character must be a letter!
+              </p> -->
+            </ng-container>
+          </div>
+          <button type="button" class="btn btn-success" (click)="addIngredient()">
+            Add Ingredient
+          </button>
+        </div>
+      </div>
+  
+      <!-- Recipe INSTRUCTIONS input -->
+      <div class="mb-3">
+        <label class="form-label">Instructions</label>
+        <div formArrayName="instructions">
+          <div
+            *ngFor="let instruction of instructions.controls; let i = index"
+            class="input-group mb-2"
+          >
+            <input
+              type="text"
+              class="form-control"
+              [formControlName]="i"
+              placeholder="Step {{ i + 1 }}"
+            />
+            <button
+              type="button"
+              class="btn btn-danger ms-2"
+              *ngIf="instructions.controls.length > 1"
+              (click)="removeInstruction(i)"
+            >
+              Remove
+            </button>
+  
+            <!-- Error message for Instruction -->
+            <ng-container *ngIf="instructions.controls[i].touched">
+              <p
+                class="error"
+                *ngIf="instructions.controls[i].hasError('required')"
+              >
+                Recipe Instruction is required!
+              </p>
+              <p
+                class="error"
+                *ngIf="instructions.controls[i].hasError('firstLetter')"
+              >
+                First character must be a letter!
+              </p>
+            </ng-container>
+          </div>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="addInstruction()"
+          >
+            Add Instruction
+          </button>
+        </div>
+      </div>
+  
+      <button
+        [disabled]="editRecipeForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+    </form>
+  
+    <!-- Display error message if there is one -->
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  </div>
+  
