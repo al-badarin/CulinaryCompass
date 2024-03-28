@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   recipes: Recipe[] = [];
   profileDetails: Profile | undefined;
   isEditMode: boolean = false;
+  // recipeToEdit: Recipe | undefined;
 
   form = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(5)]],
@@ -72,6 +73,7 @@ export class ProfileComponent implements OnInit {
 
     this.recipeService.removeRecipe(recipeId).subscribe(
       () => {
+        this.recipes = this.recipes.filter((recipe) => recipe._id !== recipeId);
         this.router.navigate(['/auth/profile']);
       },
       (error) => {
