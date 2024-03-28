@@ -7,6 +7,10 @@
   overflow: hidden;
 }
 
+.card .card-title{
+  text-wrap: nowrap;
+}
+
 .card img {
   width: 100%;
   height: 50%;
