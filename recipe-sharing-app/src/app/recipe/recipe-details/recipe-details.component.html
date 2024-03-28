@@ -30,5 +30,7 @@
         </li>
       </ol>
     </div>
+
+    <button *ngIf="canEditRecipe()" class="btn btn-primary" (click)="editRecipe()">Edit</button>
   </div>
-</div>
+  </div>
