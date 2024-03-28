@@ -48,10 +48,6 @@ a.nav-link {
   margin-top: 1rem;
 }
 
-/* #navbarNav.navbar-collapse.collapse.show ul { */
-/* TODO: style the dropdown menu better */
-/* } */
-
 .d-flex .navbar-nav.ms-auto li a {
   border-radius: 0.5rem;
   transition: background-color 0.3s ease;

@@ -55,8 +55,6 @@ export class AddRecipeComponent {
 
   onSubmit() {
     if (this.recipeForm.valid) {
-      console.log('recipeForm value: ', this.recipeForm.value);
-
       const recipeData = {
         title: this.recipeForm.value.title,
         description: this.recipeForm.value.description,
@@ -64,8 +62,6 @@ export class AddRecipeComponent {
         ingredients: this.recipeForm.value.ingredients,
         instructions: this.recipeForm.value.instructions,
       };
-
-      console.log('recipeData: ', recipeData);
 
       this.recipeService.addRecipe(recipeData).subscribe(
         (response) => {

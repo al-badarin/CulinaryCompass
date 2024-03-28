@@ -34,7 +34,6 @@ export class EditRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('recipeId');
-    console.log(id);
 
     if (id) {
       this.recipeService.getRecipeDetails(id).subscribe(
@@ -88,9 +87,6 @@ export class EditRecipeComponent implements OnInit {
   onSubmit() {
     if (this.editRecipeForm.valid) {
       const recipeId = this.activatedRoute.snapshot.params['recipeId'];
-      console.log(this.activatedRoute.snapshot.params);
-
-      console.log('editRecipeForm value: ', this.editRecipeForm.value);
 
       const recipeData = {
         _id: recipeId,
@@ -104,8 +100,6 @@ export class EditRecipeComponent implements OnInit {
         updatedAt: this.editRecipeForm.value.updatedAt,
         __v: this.editRecipeForm.value.__v,
       };
-
-      console.log('recipeData from edit form: ', recipeData);
 
       this.recipeService.updateRecipe(recipeData).subscribe(
         (response) => {

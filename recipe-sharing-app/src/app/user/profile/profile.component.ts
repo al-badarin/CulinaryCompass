@@ -14,7 +14,7 @@ import { UtilsService } from 'src/app/shared/utils.service';
 })
 export class ProfileComponent implements OnInit {
   recipes: Recipe[] = [];
-  profileDetails: Profile | undefined;
+  profileDetails: Profile | undefined; 
   isEditMode: boolean = false;
   // recipeToEdit: Recipe | undefined;
 
@@ -71,8 +71,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onDeleteRecipe(recipeId: string): void {
-    console.log('delete btn clicked');
-
     this.recipeService.removeRecipe(recipeId).subscribe(
       () => {
         this.recipes = this.recipes.filter((recipe) => recipe._id !== recipeId);
