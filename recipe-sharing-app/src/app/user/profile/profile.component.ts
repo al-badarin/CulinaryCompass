@@ -5,6 +5,7 @@ import { RecipeService } from 'src/app/recipe/recipe.service';
 import { Profile } from 'src/app/models/profile';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UtilsService } from 'src/app/shared/utils.service';
 
 @Component({
   selector: 'app-profile',
@@ -26,6 +27,7 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService,
     private recipeService: RecipeService,
     private fb: FormBuilder,
+    private utilsService: UtilsService,
     private router: Router
   ) {}
 
@@ -42,7 +44,7 @@ export class ProfileComponent implements OnInit {
 
   getMyRecipes() {
     this.recipeService.getMyRecipes().subscribe((recipes) => {
-      this.recipes = recipes;
+      this.recipes = this.utilsService.sortRecipesByDate(recipes);
     });
   }
 
