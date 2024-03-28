@@ -1,3 +1,5 @@
+import { UserId } from './user-id';
+
 export interface Recipe {
   _id: string;
   title: string;
@@ -5,4 +7,8 @@ export interface Recipe {
   imageUrl: string;
   ingredients: string[];
   instructions: string[];
+  userId: UserId;
+  created_at: string;
+  updatedAt: string;
+  __v: number;
 }
