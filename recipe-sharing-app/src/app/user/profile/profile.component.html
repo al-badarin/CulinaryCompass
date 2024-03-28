@@ -75,7 +75,7 @@
                 <button type="button" class="btn btn-danger" (click)="onDeleteRecipe(recipe._id)">Delete</button>
               </div>
             </div>
-            <p class="mb-1">{{ recipe.description }}</p>
+            <p class="mb-1">{{ recipe.description | slice: 80 }}</p>
           </a>
         </div>
       </div>
