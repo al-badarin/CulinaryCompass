@@ -8,7 +8,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full', 
+    pathMatch: 'full',
     redirectTo: '/home',
   },
   { path: 'home', component: HomeComponent },
@@ -18,7 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'recipes',
-    loadChildren: () => import('./recipe/recipe.module').then((m) => m.RecipeModule),
+    loadChildren: () =>
+      import('./recipe/recipe.module').then((m) => m.RecipeModule),
   },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
