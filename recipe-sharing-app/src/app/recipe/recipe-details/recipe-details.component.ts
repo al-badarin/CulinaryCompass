@@ -13,6 +13,7 @@ export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe | undefined;
   isLoggedIn: boolean = false;
   isOwner: boolean = false;
+  isLoading: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,12 +43,14 @@ export class RecipeDetailsComponent implements OnInit {
     if (id) {
       this.recipeService.getRecipeDetails(id).subscribe(
         (recipe) => {
+          this.isLoading = false;
           this.recipe = recipe;
           if (this.isLoggedIn && this.recipe) {
             this.checkIsOwner(this.recipe.userId._id);
           }
         },
         (error) => {
+          this.isLoading = false;
           console.error('Error fetching recipe details:', error);
         }
       );
