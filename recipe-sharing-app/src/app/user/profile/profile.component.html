@@ -3,7 +3,7 @@
     <div class="col-md-8 mx-auto">
       <!-- ** USER'S INFO -->
 
-      <div class="card">
+      <div class="card" [style.height.px]="isEditMode ? 340 : 220">
         <div class="card-header">
           <h3 class="mb-0">Profile Information</h3>
         </div>
@@ -29,12 +29,18 @@
           </div>
 
           <!-- ** EDIT MODE -->
-          <div *ngIf="isEditMode">
+          <div *ngIf="isEditMode" class="edit-mode">
             <form [formGroup]="form" (ngSubmit)="saveProfileHandle()">
               <!-- username input -->
               <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" formControlName="username" class="form-control" />
+                <input type="text" id="username" formControlName="username" class="form-control" 
+                [ngClass]="{
+                  'input-success':
+                    form.get('username')?.valid && form.get('username')?.touched,
+                  'input-error':
+                    form.get('username')?.invalid && form.get('username')?.touched
+                }"/>
               </div>
 
               <!-- username validations -->
@@ -45,8 +51,14 @@
 
               <!-- email input -->
               <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" formControlName="email" class="form-control" />
+                <label for="email" class="email">Email</label>
+                <input type="email" id="email" formControlName="email" class="form-control" 
+                [ngClass]="{
+                  'input-success':
+                    form.get('email')?.valid && form.get('email')?.touched,
+                  'input-error':
+                    form.get('email')?.invalid && form.get('email')?.touched
+                }"/>
               </div>
 
               <!-- email validations -->
@@ -55,6 +67,7 @@
                 <div *ngIf="form.get('email')?.errors?.['email']" class="error">Invalid email format!</div>
               </ng-container>
 
+              <!-- ACTION BTNS -->
               <div class="btn-container-2">
                 <button type="submit" class="btn btn-success" [disabled]="form.invalid">Save</button>
                 <button type="button" class="btn btn-danger" (click)="onCancel($event)">Cancel</button>
