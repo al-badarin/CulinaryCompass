@@ -1,9 +1,12 @@
 .card {
   max-width: 360px;
-  height: 300px;
   margin: 0 auto;
   /* background-color: #f9f9f9; */
   background-color: #f8f9fa;
+}
+
+.card:hover::after {
+  content: initial;
 }
 
 label {
@@ -28,8 +31,8 @@ label.col-sm-3.col-form-label {
   justify-content: center;
 } */
 
-input#username {
-  margin-bottom: 1.2em;
+label.email {
+  margin-top: 1.2em;
 }
 
 .card-body .btn-container {
@@ -138,6 +141,23 @@ input#username {
 
 .create-recipe-link:hover {
   color: #0056b3;
+}
+
+/* ERRORS */
+div.error {
+  text-align: left;
+  border-radius: 0.3em;
+  color: red;
+  padding-top: 0;
+  font-style: italic;
+}
+
+.input-error {
+  border-left: 2px solid red;
+}
+
+.input-success {
+  border-left: 2px solid green;
 }
 
 /* .profile-container {
