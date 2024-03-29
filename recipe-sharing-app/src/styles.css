@@ -9,6 +9,7 @@
 
 .card .card-title{
   text-wrap: nowrap;
+  /* text-align: center; */
 }
 
 .card img {
