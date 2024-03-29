@@ -1,4 +1,8 @@
-<div class="recipe-details-container">
+<div *ngIf="isLoading">
+  <app-loader></app-loader> 
+</div>
+
+<div *ngIf="!isLoading" class="recipe-details-container">
   <div class="recipe-details">
     <h2>{{ recipe?.title }}</h2>
     <p class="description">{{ recipe?.description }}</p>
