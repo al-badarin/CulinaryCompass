@@ -4,7 +4,7 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
-import { AuthActivate } from '../core/guards/auth.activate';
+import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Routes = [
   {
