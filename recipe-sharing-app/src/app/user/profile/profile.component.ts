@@ -14,9 +14,8 @@ import { UtilsService } from 'src/app/shared/utils.service';
 })
 export class ProfileComponent implements OnInit {
   recipes: Recipe[] = [];
-  profileDetails: Profile | undefined; 
+  profileDetails: Profile | undefined;
   isEditMode: boolean = false;
-  // recipeToEdit: Recipe | undefined;
 
   form = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(5)]],
@@ -34,7 +33,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     // Setting USER'S FIELDS
     const { username, email } = this.authService.user!;
-
     this.profileDetails = { username, email };
     this.form.setValue({ username, email });
 
