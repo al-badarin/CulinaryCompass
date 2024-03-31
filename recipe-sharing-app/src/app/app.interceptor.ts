@@ -44,7 +44,7 @@ export class AppInterceptor implements HttpInterceptor {
       }),
 
       finalize(() => {
-        this.spinnerService.hide();
+        this.spinnerService.hide(); 
       })
     );
   }
