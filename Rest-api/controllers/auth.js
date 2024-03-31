@@ -38,9 +38,19 @@ function register(req, res, next) {
         field = field.split(" dup key")[0];
         field = field.substring(0, field.lastIndexOf("_"));
 
-        res
-          .status(409)
-          .send({ message: `This ${field} is already registered!` });
+        if (field === "email") {
+          res
+            .status(409)
+            .send({ message: `This ${field} is already registered!` });
+        } else if (field === "username") {
+          res
+            .status(409)
+            .send({
+              message: `This ${field} is already taken! Please choose another username.`,
+            });
+        } else {
+          res.status(409).send({ message: `This ${field} is already in use!` });
+        }
         return;
       }
       next(err);
