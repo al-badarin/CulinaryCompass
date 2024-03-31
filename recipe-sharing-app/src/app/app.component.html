@@ -1,5 +1,9 @@
-<app-authenticate>
+<!-- <div *ngIf="isLoading"> -->
+  <app-loader *ngIf="isLoading"></app-loader>
+<!-- </div> -->
+
+<!-- <div *ngIf="!isLoading"> -->
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
-</app-authenticate>
+<!-- </div> -->
