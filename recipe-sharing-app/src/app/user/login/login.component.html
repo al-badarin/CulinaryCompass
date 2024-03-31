@@ -12,7 +12,7 @@
         name="email"
         ngModel
         #inputEmail="ngModel"
-        email
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
         required
         [ngClass]="{
           'input-success': inputEmail.valid && inputEmail.touched && !hasError,
@@ -25,7 +25,7 @@
         <p class="error" *ngIf="inputEmail.errors?.['required']">
           Email is required!
         </p>
-        <p class="error" *ngIf="inputEmail.errors?.['email']">
+        <p class="error" *ngIf="inputEmail.errors?.['pattern']">
           Email is not valid!
         </p>
       </ng-container>
