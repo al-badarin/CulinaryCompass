@@ -16,10 +16,18 @@ export class ProfileComponent implements OnInit {
   recipes: Recipe[] = [];
   profileDetails: Profile | undefined;
   isEditMode: boolean = false;
+  errorMessage: string = '';
+  hasError: boolean = false;
 
   form = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(5)]],
-    email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+      ],
+    ],
   });
 
   constructor(
@@ -52,19 +60,33 @@ export class ProfileComponent implements OnInit {
 
   saveProfileHandle(): void {
     if (this.form.invalid) {
+      this.errorMessage = 'Please fill out all required fields correctly.';
       return;
     }
 
     this.profileDetails = { ...this.form.value } as Profile;
     const { username, email } = this.profileDetails;
 
-    this.authService.updateProfile(username!, email!).subscribe(() => {
-      this.toggleEditMode();
-    });
+    this.authService.updateProfile(username!, email!).subscribe(
+      (response) => {
+        console.log('Profile changes made successfully!', response);
+        this.toggleEditMode();
+      },
+      (error) => {
+        this.hasError = true;
+        console.error('Profile edit error:', error);
+        if (error.error && error.error.message) {
+          this.errorMessage = error.error.message;
+        } else {
+          this.errorMessage =
+            'An error occurred during editing profile details. Please try again.';
+        }
+      }
+    );
   }
 
   onCancel(e: Event): void {
-    e.preventDefault(); 
+    e.preventDefault();
     this.toggleEditMode();
   }
 
