@@ -34,7 +34,7 @@ export class AppInterceptor implements HttpInterceptor {
       catchError((error) => {
         console.error('HTTP Error:', error);
 
-        if (error.status === 401) {
+        if (error.status === 404) {
           this.router.navigate(['/error-404']);
         } else {
           return throwError(error);
