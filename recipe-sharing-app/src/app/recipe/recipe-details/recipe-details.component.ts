@@ -11,9 +11,9 @@ import { AuthService } from 'src/app/user/auth.service';
 })
 export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe | undefined;
+  recipes: Recipe[] = [];
   isLoggedIn: boolean = false;
   isOwner: boolean = false;
-  isLoading: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,14 +43,12 @@ export class RecipeDetailsComponent implements OnInit {
     if (id) {
       this.recipeService.getRecipeDetails(id).subscribe(
         (recipe) => {
-          this.isLoading = false;
           this.recipe = recipe;
           if (this.isLoggedIn && this.recipe) {
             this.checkIsOwner(this.recipe.userId._id);
           }
         },
         (error) => {
-          this.isLoading = false;
           console.error('Error fetching recipe details:', error);
         }
       );
@@ -73,6 +71,30 @@ export class RecipeDetailsComponent implements OnInit {
   editRecipe(): void {
     if (this.recipe) {
       this.router.navigate(['/recipes/edit', this.recipe._id]);
+    }
+  }
+
+  canDeleteRecipe(): boolean {
+    return this.isLoggedIn && this.isOwner;
+  }
+
+  deleteRecipe(recipeId: string | undefined): void {
+    if (recipeId) {
+      // Check if recipeId is not undefined
+      this.recipeService.removeRecipe(recipeId).subscribe(
+        () => {
+          this.recipes = this.recipes.filter(
+            (recipe) => recipe._id !== recipeId
+          );
+          this.router.navigate(['/recipes/recipes-list']);
+        },
+        (error) => {
+          console.error('Deleting Recipe Error:', error);
+          this.router.navigateByUrl('/auth/profile');
+        }
+      );
+    } else {
+      console.error('Recipe ID is undefined.');
     }
   }
 }
