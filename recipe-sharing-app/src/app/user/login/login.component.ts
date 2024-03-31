@@ -30,8 +30,6 @@ export class LoginComponent {
         console.error('Login error:', error);
         this.errorMessage = 'Invalid email or password. Please try again.';
         this.hasError = true;
-        console.log('hasError:', this.hasError); // Check if it logs true
-        console.log('errorMessage:', this.errorMessage); // Check the error message
       }
     );
   }
