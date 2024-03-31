@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onCancel(e: Event): void {
-    e.preventDefault();
+    e.preventDefault(); 
     this.toggleEditMode();
   }
 
