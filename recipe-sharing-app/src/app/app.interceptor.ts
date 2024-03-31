@@ -6,20 +6,23 @@ import {
   HttpInterceptor,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, finalize, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { LoaderService } from './shared/loader/loader.service';
 
 const { apiUrl } = environment;
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private spinnerService: LoaderService) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    this.spinnerService.show();
+
     if (request.url.startsWith('/api')) {
       request = request.clone({
         url: request.url.replace('/api', apiUrl),
@@ -38,6 +41,10 @@ export class AppInterceptor implements HttpInterceptor {
         }
 
         return [error];
+      }),
+
+      finalize(() => {
+        this.spinnerService.hide();
       })
     );
   }
