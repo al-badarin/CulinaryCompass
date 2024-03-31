@@ -7,5 +7,6 @@ import { LoaderComponent } from './loader/loader.component';
   declarations: [SlicePipe, LoaderComponent],
   imports: [CommonModule],
   exports: [SlicePipe, LoaderComponent],
+  // providers: [LoaderComponent]
 })
 export class SharedModule {}
