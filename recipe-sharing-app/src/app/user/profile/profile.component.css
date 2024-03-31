@@ -160,6 +160,10 @@ div.error {
   border-left: 2px solid green;
 }
 
+.alert.alert-danger {
+  margin-top: 1rem;
+}
+
 /* .profile-container {
   max-width: 800px;
   margin: 0 auto;
