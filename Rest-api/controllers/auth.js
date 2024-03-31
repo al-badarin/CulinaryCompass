@@ -127,7 +127,29 @@ function editProfileInfo(req, res, next) {
     .then((x) => {
       res.status(200).json(x);
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.name === "MongoError" && err.code === 11000) {
+        let field = err.message.split("index: ")[1];
+        field = field.split(" dup key")[0];
+        field = field.substring(0, field.lastIndexOf("_"));
+
+        if (field === "email") {
+          res
+            .status(409)
+            .send({ message: `This ${field} is already registered!` });
+        } else if (field === "username") {
+          res
+            .status(409)
+            .send({
+              message: `This ${field} is already taken! Please choose another username.`,
+            });
+        } else {
+          res.status(409).send({ message: `This ${field} is already in use!` });
+        }
+        return;
+      }
+      next(err);
+    });
 }
 
 module.exports = {
