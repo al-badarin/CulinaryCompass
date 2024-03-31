@@ -64,7 +64,7 @@
               <!-- email validations -->
               <ng-container *ngIf="form.get('email')?.touched" class="invalid-feedback">
                 <div *ngIf="form.get('email')?.errors?.['required']" class="error">Email is required!</div>
-                <div *ngIf="form.get('email')?.errors?.['email']" class="error">Invalid email format!</div>
+                <div *ngIf="form.get('email')?.errors?.['pattern']" class="error">Invalid email format!</div>
               </ng-container>
 
               <!-- ACTION BTNS -->
