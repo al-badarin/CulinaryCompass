@@ -1,8 +1,4 @@
-<div *ngIf="isLoading">
-  <app-loader></app-loader> 
-</div>
-
-<div *ngIf="!isLoading" class="recipe-details-container">
+<div class="recipe-details-container">
   <div class="recipe-details">
     <h2>{{ recipe?.title }}</h2>
     <p class="description">{{ recipe?.description }}</p>
@@ -36,6 +32,6 @@
     </div>
 
     <button *ngIf="canEditRecipe()" class="btn btn-primary" (click)="editRecipe()">Edit</button>
-    <button *ngIf="canDeleteRecipe()" class="btn btn-danger" (click)="deleteRecipe()">Delete</button>
+    <button *ngIf="canDeleteRecipe()" class="btn btn-danger" (click)="deleteRecipe(recipe?._id)">Delete</button>
   </div>
   </div>
