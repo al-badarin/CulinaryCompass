@@ -3,7 +3,8 @@
     <div class="col-md-8 mx-auto">
       <!-- ** USER'S INFO -->
 
-      <div class="card" [style.height.px]="isEditMode ? 340 : 220">
+      <div class="card"  
+      [style.height.px]="isEditMode ? (hasError ? 400 : 340) : 220">
         <div class="card-header">
           <h3 class="mb-0">Profile Information</h3>
         </div>
@@ -37,9 +38,9 @@
                 <input type="text" id="username" formControlName="username" class="form-control" 
                 [ngClass]="{
                   'input-success':
-                    form.get('username')?.valid && form.get('username')?.touched,
+                    form.get('username')?.valid && form.get('username')?.touched && !hasError,
                   'input-error':
-                    form.get('username')?.invalid && form.get('username')?.touched
+                    (form.get('username')?.invalid || hasError) && form.get('username')?.touched
                 }"/>
               </div>
 
@@ -55,9 +56,9 @@
                 <input type="email" id="email" formControlName="email" class="form-control" 
                 [ngClass]="{
                   'input-success':
-                    form.get('email')?.valid && form.get('email')?.touched,
+                    form.get('email')?.valid && form.get('email')?.touched && !hasError,
                   'input-error':
-                    form.get('email')?.invalid && form.get('email')?.touched
+                    (form.get('email')?.invalid || hasError) && form.get('email')?.touched
                 }"/>
               </div>
 
@@ -73,6 +74,9 @@
                 <button type="button" class="btn btn-danger" (click)="onCancel($event)">Cancel</button>
               </div>
             </form>
+
+             <!-- Display error message if there is one -->
+            <div *ngIf="hasError" class="alert alert-danger">{{ errorMessage }}</div>
           </div>
         </div>
       </div>
