@@ -58,7 +58,7 @@
         <p class="error" *ngIf="contactForm.get('email')?.errors?.['required']">
           Email is required!
         </p>
-        <p class="error" *ngIf="contactForm.get('email')?.errors?.['email']">
+        <p class="error" *ngIf="contactForm.get('email')?.errors?.['pattern']">
           Email is not valid!
         </p>
       </ng-container>
