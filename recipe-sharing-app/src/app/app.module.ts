@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
-import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { appInterceptorProvider } from './app.interceptor';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { appInterceptorProvider } from './app.interceptor';
     AboutComponent,
     ContactComponent,
     ErrorPageComponent,
-    AuthenticateComponent,
   ],
   imports: [
     BrowserModule,
