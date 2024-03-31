@@ -1,0 +1,21 @@
+.success-message {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.success-message.ng-enter,
+.success-message.ng-leave {
+  opacity: 0;
+}
+
+.success-message.ng-enter {
+  transform: translateY(-20px);
+}
+
+.success-message.ng-leave {
+  transform: translateY(20px);
+}
