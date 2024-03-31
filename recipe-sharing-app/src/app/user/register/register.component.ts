@@ -12,7 +12,7 @@ import { matchPasswordsValidator } from 'src/app/shared/validators/match-passwor
 export class RegisterComponent {
   form = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(5)]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
     passGroup: this.fb.group(
       {
         password: ['', [Validators.required, Validators.minLength(5)]],
@@ -49,7 +49,7 @@ export class RegisterComponent {
       .subscribe(
         (response) => {
           console.log('Registration successful!', response);
-          this.router.navigateByUrl('/auth/login');
+          this.router.navigateByUrl('/home');
         },
         (error) => {
           console.error('Registration error:', error);
