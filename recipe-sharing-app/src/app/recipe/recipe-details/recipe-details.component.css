@@ -66,3 +66,7 @@
   color: #666;
   margin-bottom: 12px;
 }
+
+.btn.btn-primary {
+  margin-right: 0.3em;
+}
