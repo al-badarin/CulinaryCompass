@@ -15,13 +15,13 @@ const { apiUrl } = environment;
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private spinnerService: LoaderService) {}
+  constructor(private router: Router, private loaderService: LoaderService) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    this.spinnerService.show();
+    this.loaderService.show();
 
     if (request.url.startsWith('/api')) {
       request = request.clone({
@@ -44,7 +44,7 @@ export class AppInterceptor implements HttpInterceptor {
       }),
 
       finalize(() => {
-        this.spinnerService.hide(); 
+        this.loaderService.hide(); 
       })
     );
   }
