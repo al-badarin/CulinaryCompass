@@ -19,7 +19,7 @@ export class LoaderService {
  isLoading: boolean = false;
 
   show() {
-    this.isLoading = true;
+    this.isLoading = true; 
   }
 
   hide() {
