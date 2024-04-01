@@ -80,7 +80,6 @@ export class RecipeDetailsComponent implements OnInit {
 
   deleteRecipe(recipeId: string | undefined): void {
     if (recipeId) {
-      // Check if recipeId is not undefined
       this.recipeService.removeRecipe(recipeId).subscribe(
         () => {
           this.recipes = this.recipes.filter(
