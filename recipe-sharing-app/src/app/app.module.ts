@@ -11,6 +11,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { appInterceptorProvider } from './app.interceptor';
     AboutComponent,
     ContactComponent,
     ErrorPageComponent,
+    AuthenticateComponent
   ],
   imports: [
     BrowserModule,
