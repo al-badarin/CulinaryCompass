@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RecipeService } from '../recipe/recipe.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -14,8 +12,6 @@ export class ContactComponent {
   successMessage: string = '';
 
   constructor(
-    private recipeService: RecipeService,
-    private router: Router,
     private fb: FormBuilder
   ) {
     this.contactForm = this.fb.group({
@@ -40,14 +36,14 @@ export class ContactComponent {
 
       // Simulate sending the form data
       this.sendFormData().then(() => {
-        this.successMessage = 'Your message was successfully sent!';
+        this.successMessage = 'Your message was successfully sent! We will get back to you soon.';
         this.contactForm.reset();
         setTimeout(() => {
-          this.successMessage = ''; // Clear success message after 5 seconds
-        }, 5000);
+          this.successMessage = '';
+        }, 3000);
       });
 
-      this.router.navigate(['/home']);
+      // this.router.navigate(['/home']);
     } else {
       console.error('Error sending message form:');
       this.errorMessage =
