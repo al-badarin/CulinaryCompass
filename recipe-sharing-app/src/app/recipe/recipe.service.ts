@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Recipe } from '../models/recipe.model';
-import { AuthService } from '../user/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient) {}
 
   // GET ALL RECIPES
   getRecipes() {
@@ -54,7 +53,10 @@ export class RecipeService {
 
   // EDIT A RECIPE
   updateRecipe(recipe: Recipe) {
-    return this.http.put<Recipe>(`/api/recipes/details/${recipe._id}/edit`, recipe);
+    return this.http.put<Recipe>(
+      `/api/recipes/details/${recipe._id}/edit`,
+      recipe
+    );
   }
 
   // DELETE A RECEIPE
