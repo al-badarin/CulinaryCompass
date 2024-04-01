@@ -1,31 +1,67 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <!-- CulinaryCompass Brand -->
-    <a class="navbar-brand" routerLink="/home">CulinaryCompass</a>
+    <ul id="navbarNav" class="navbar-nav ms-auto">
+      <!-- SITE LOGO -->
+      <a class="navbar-brand" routerLink="/home"
+        ><i class="fas fa-utensils"></i>CulinaryCompass</a
+      >
+      <!-- GENERAL ROUTES -->
+      <div class="general-routes">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home"
+            ><i class="fas fa-home"></i>Home</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/recipes/add-recipe"
+            ><i class="fas fa-plus"></i>Add Recipe</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/recipes/recipes-list"
+            ><i class="fas fa-book"></i>Recipes</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about"
+            ><i class="fas fa-info-circle"></i>About</a
+          >
+        </li>
+        <li class="nav-item" class="contact-nav">
+          <a class="nav-link" routerLink="/contact"
+            ><i class="fas fa-envelope"></i>Contact</a
+          >
+        </li>
+      </div>
 
-    <!-- Login/Register or Profile/Logout Links -->
-    <div class="d-flex">
-      <ul class="navbar-nav ms-auto">
+      <!-- AUTH ROUTES -->
+      <div class="auth-routes">
         <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="/auth/login">Login</a>
+          <a class="nav-link" routerLink="/auth/login"
+            ><i class="fas fa-sign-in-alt"></i>Login</a
+          >
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="/auth/register">Register</a>
+          <a class="nav-link" routerLink="/auth/register"
+            ><i class="fas fa-user-plus"></i>Register</a
+          >
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="/auth/profile">My Profile</a>
+          <a class="nav-link" routerLink="/auth/profile"
+            ><i class="fas fa-user"></i>My Profile</a
+          >
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" (click)="logout()">Logout</a>
+          <a class="nav-link" (click)="logout()"
+            ><i class="fas fa-sign-out-alt"></i>Logout</a
+          >
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="/recipes/add-recipe">Add Recipe</a>
-        </li>
-      </ul>
-    </div>
+      </div>
+    </ul>
+  </div>
 
-    <!-- Toggle Button for Responsive Design -->
-    <button
+  <!-- Toggle Button for Responsive Design -->
+  <!-- <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -35,24 +71,5 @@
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Collapsible Navbar Links -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/recipes/recipes-list">Recipes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+    </button> -->
 </nav>
