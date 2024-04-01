@@ -32,3 +32,8 @@ p.error {
 .alert.alert-danger {
   margin-top: 1rem;
 }
+
+/* SUCCESS */
+.alert.alert-success {
+  margin-top: 1em;
+}
