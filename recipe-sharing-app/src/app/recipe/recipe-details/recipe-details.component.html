@@ -31,7 +31,19 @@
       </ol>
     </div>
 
-    <button *ngIf="canEditRecipe()" class="btn btn-primary" (click)="editRecipe()">Edit</button>
-    <button *ngIf="canDeleteRecipe()" class="btn btn-danger" (click)="deleteRecipe(recipe?._id)">Delete</button>
+    <button
+      *ngIf="canEditRecipe()"
+      class="btn btn-primary"
+      (click)="editRecipe()"
+    >
+      Edit
+    </button>
+    <button
+      *ngIf="canDeleteRecipe()"
+      class="btn btn-danger"
+      (click)="deleteRecipe(recipe?._id)"
+    >
+      Delete
+    </button>
   </div>
-  </div>
+</div>
