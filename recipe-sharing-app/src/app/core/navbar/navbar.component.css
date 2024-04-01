@@ -13,62 +13,47 @@ a {
   transition: color 0.3s ease;
 }
 
-a:hover {
+a.navbar-brand:hover {
   color: lightgray;
 }
-
-.navbar-brand {
-  width: 30%;
-}
-
-/* .d-flex {
-  width: 24%;
-} */
 
 a.nav-link {
   text-wrap: nowrap;
 }
 
-.d-flex .navbar-nav.ms-auto {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
+i {
+  margin-right: 0.3em;
 }
 
 #navbarNav {
-  width: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#navbarNav .navbar-nav.ms-auto {
-  align-items: flex-end;
-  text-align: center;
+#navbarNav .general-routes {
+  display: flex;
 }
 
-#navbarNav.navbar-collapse.collapse.show {
-  margin-top: 1rem;
+#navbarNav .auth-routes {
+  display: flex;
+  align-self: flex-end;
+  /* border: 2px solid red; */
 }
 
-.d-flex .navbar-nav.ms-auto li a {
+#navbar.navbar-nav.ms-auto li a {
   border-radius: 0.5rem;
   transition: background-color 0.3s ease;
 }
 
-.d-flex .navbar-nav.ms-auto li a,
-#navbarNav .navbar-nav.ms-auto li a {
+#navbarNav.navbar-nav.ms-auto li a {
+  margin-right: 4px;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+#navbarNav.navbar-nav.ms-auto li a:hover {
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: background-color 0.3s ease;
-}
-
-.d-flex .navbar-nav.ms-auto li a:hover,
-#navbarNav .navbar-nav.ms-auto li a:hover {
-  /* color: white; */
   background-color: rgba(13, 110, 253, 0.8);
 }
-
-/* @media (max-width: 992px) {
-  a.nav-link {
-    text-wrap: nowrap;
-  }
-} */
