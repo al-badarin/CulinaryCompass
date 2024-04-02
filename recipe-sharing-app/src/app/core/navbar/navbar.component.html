@@ -1,75 +1,50 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <ul id="navbarNav" class="navbar-nav ms-auto">
-      <!-- SITE LOGO -->
-      <a class="navbar-brand" routerLink="/home"
-        ><i class="fas fa-utensils"></i>CulinaryCompass</a
-      >
-      <!-- GENERAL ROUTES -->
+<nav id="navbar">
+  <ul>
+    <!-- **SITE LOGO -->
+    <li class="navbar-brand">
+      <a routerLink="/home"><i class="fas fa-utensils"></i>CulinaryCompass</a>
+    </li>
+
+    <li class="burger" (click)="toggleMenu()">
+      <i class="fas" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+    </li>
+
+    <li class="menu" [class.is-open]="isMenuOpen">
+      <span></span>
+      <!-- **GENERAL ROUTES -->
       <div class="general-routes">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/home"
-            ><i class="fas fa-home"></i>Home</a
-          >
-        </li>
-        <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="/recipes/add-recipe"
-            ><i class="fas fa-plus"></i>Add Recipe</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/recipes/recipes-list"
-            ><i class="fas fa-book"></i>Recipes</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/about"
-            ><i class="fas fa-info-circle"></i>About</a
-          >
-        </li>
-        <li class="nav-item" class="contact-nav">
-          <a class="nav-link" routerLink="/contact"
-            ><i class="fas fa-envelope"></i>Contact</a
-          >
-        </li>
+        <a class="menu-item" routerLink="/home"
+          ><i class="fas fa-home"></i>Home</a
+        >
+        <a class="menu-item" routerLink="/recipes/add-recipe" *ngIf="isLoggedIn"
+          ><i class="fas fa-plus"></i>Add Recipe</a
+        >
+        <a class="menu-item" routerLink="/recipes/recipes-list"
+          ><i class="fas fa-book"></i>Recipes</a
+        >
+        <a class="menu-item" routerLink="/about"
+          ><i class="fas fa-info-circle"></i>About</a
+        >
+        <a class="menu-item contact" routerLink="/contact"
+          ><i class="fas fa-envelope"></i>Contact</a
+        >
       </div>
 
-      <!-- AUTH ROUTES -->
+      <!-- **AUTH ROUTES -->
       <div class="auth-routes">
-        <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="/auth/login"
-            ><i class="fas fa-sign-in-alt"></i>Login</a
-          >
-        </li>
-        <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="/auth/register"
-            ><i class="fas fa-user-plus"></i>Register</a
-          >
-        </li>
-        <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="/auth/profile"
-            ><i class="fas fa-user"></i>My Profile</a
-          >
-        </li>
-        <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" (click)="logout()"
-            ><i class="fas fa-sign-out-alt"></i>Logout</a
-          >
-        </li>
+        <a class="menu-item" routerLink="/auth/login" *ngIf="!isLoggedIn"
+          ><i class="fas fa-sign-in-alt"></i>Login</a
+        >
+        <a class="menu-item" routerLink="/auth/register" *ngIf="!isLoggedIn"
+          ><i class="fas fa-user-plus"></i>Register</a
+        >
+        <a class="menu-item" routerLink="/auth/profile" *ngIf="isLoggedIn"
+          ><i class="fas fa-user"></i>My Profile</a
+        >
+        <a class="menu-item logout" (click)="logout()" *ngIf="isLoggedIn"
+          ><i class="fas fa-sign-out-alt"></i>Logout</a
+        >
       </div>
-    </ul>
-  </div>
-
-  <!-- Toggle Button for Responsive Design -->
-  <!-- <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
+    </li>
+  </ul>
 </nav>
