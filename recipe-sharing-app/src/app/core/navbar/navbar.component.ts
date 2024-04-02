@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/user/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
   constructor(private authService: AuthService, private router: Router) {}
@@ -27,5 +27,11 @@ export class NavbarComponent {
         this.router.navigateByUrl('/auth/login');
       }
     );
+  }
+
+  isMenuOpen = false;
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
