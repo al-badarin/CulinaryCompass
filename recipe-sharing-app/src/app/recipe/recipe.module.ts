@@ -7,6 +7,7 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,15 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
     RecipeDetailsComponent,
     AddRecipeComponent,
     EditRecipeComponent,
+    
   ],
   imports: [
     CommonModule,
     RecipeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
   ],
 })
 export class RecipeModule {}
