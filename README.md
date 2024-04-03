@@ -1,7 +1,7 @@
 # CulinaryCompass
 
 <iframe width="560" height="315" 
-   src="https://www.youtube.com/embed/au5F5Q9bL-o?si=r_cfkNH2DKBA7IMl" title="YouTube Video Embed" frameborder="0" allowfullscreen></iframe>
+   src="https://www.youtube.com/au5F5Q9bL-o?si=r_cfkNH2DKBA7IMl" title="YouTube Video Embed" frameborder="0" allowfullscreen></iframe>
 
 
 ## Table of Contents
