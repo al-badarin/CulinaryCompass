@@ -5,7 +5,7 @@ import { User } from '../models/user';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', 
 })
 export class AuthService implements OnDestroy {
   public user$$ = new BehaviorSubject<User | undefined>(undefined);

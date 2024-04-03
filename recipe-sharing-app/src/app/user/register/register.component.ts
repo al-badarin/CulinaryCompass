@@ -45,7 +45,7 @@ export class RegisterComponent {
       return;
     }
 
-    const {
+    const { 
       username,
       email,
       passGroup: { password, repeatPassword } = {},
@@ -56,6 +56,7 @@ export class RegisterComponent {
       .subscribe(
         (response) => {
           console.log('Registration successful!', response);
+          this.authService.user$$.next(response);
           this.router.navigateByUrl('/home');
         },
         (error) => {
