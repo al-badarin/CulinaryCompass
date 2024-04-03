@@ -2,7 +2,8 @@ $menuHeight: 70px;
 $menuBreakpoint: 900px;
 
 #navbar {
-  background-color: #242424;
+  // background-color: #242424;
+  background-color: #212529;
   padding: 0 3em;
 }
 
@@ -24,20 +25,6 @@ $menuBreakpoint: 900px;
     justify-content: space-between;
     align-self: center;
   }
-
-  // .general-routes,
-  // .auth-routes {
-  //   display: flex;
-  //   flex-direction: row;
-  // }
-
-  // .general-routes{
-  //   align-self: center;
-  // }
-
-  // .auth-routes{
-  //   justify-self: flex-end;
-  // }
 
   i {
     margin-right: 0.3em;
@@ -110,6 +97,10 @@ $menuBreakpoint: 900px;
     align-items: center;
     position: relative;
 
+    div:nth-of-type(2) .menu-item:last-child {
+      border: none;
+    }
+
     @media (max-width: $menuBreakpoint) {
       display: none;
       opacity: 0;
@@ -125,7 +116,8 @@ $menuBreakpoint: 900px;
         // margin-right: 2px;
         position: absolute;
         top: #{$menuHeight + 1};
-        background-color: #242424;
+        // background-color: #242424;
+        background-color: #212529;
         width: 111px;
         opacity: 1;
         visibility: visible;
@@ -139,20 +131,20 @@ $menuBreakpoint: 900px;
           border-bottom: 1px solid white;
         }
 
-        .menu-item:last-child {
-          border: none;
-        }
-
         .menu-item:hover {
           color: rgb(181, 181, 181);
           transform: scale(1.05);
           // background-color: rgba(13, 110, 253, 0.8);
         }
+
+        // .menu-item:active {
+        //   background-color: rgba(0, 0, 0, 0.1); /* Change background color when clicked */
+        //   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); /* Add box-shadow when clicked */
+        // }
       }
     }
 
     .menu-item {
-      padding: 0 10px;
       text-decoration: none;
       display: block;
       text-transform: uppercase;
@@ -171,15 +163,16 @@ $menuBreakpoint: 900px;
     flex-direction: row;
   }
 
-  .general-routes{
+  .general-routes {
     align-self: center;
   }
 
-  .auth-routes{
+  .auth-routes {
     justify-self: flex-end;
   }
 
   a.menu-item {
+    padding: 8px 12px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 0.5rem;
@@ -200,7 +193,12 @@ $menuBreakpoint: 900px;
   .menu-item {
     height: 63px;
     line-height: 63px;
+    padding: 0px 10px;
     // height: $menuHeight;
     // line-height: $menuHeight;
+  }
+
+  .menu-item:last-of-type {
+    border: none;
   }
 }
