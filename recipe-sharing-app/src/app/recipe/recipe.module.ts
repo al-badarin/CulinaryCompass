@@ -7,7 +7,8 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
-import { NgxPaginationModule } from 'ngx-pagination';
+// TODO: Pagination of RecipesList
+// import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RecipeDetailsComponent,
     AddRecipeComponent,
     EditRecipeComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -23,7 +23,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    NgxPaginationModule
+    // MatPaginatorModule,
   ],
 })
 export class RecipeModule {}

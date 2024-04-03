@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     AboutComponent,
     ContactComponent,
     ErrorPageComponent,
-    AuthenticateComponent
+    AuthenticateComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +30,7 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     CoreModule,
     SharedModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent],
