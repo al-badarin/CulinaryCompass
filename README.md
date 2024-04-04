@@ -2,7 +2,7 @@
 
 <p align="left">
   <a>
-    <img src="site-view." />
+    <img src="site-view.mp4" />
   </a>
 </p>
 
