@@ -1,4 +1,6 @@
-# <a href='https://cullinary-compass.netlify.app'>CulinaryCompass</a>
+# CulinaryCompass
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -9,9 +11,9 @@
    - [Recipes List](#recipes-list)
    - [My Profile](#my-profile)
    - [Contacts](#contacts)
-4. [Getting Started](#getting-started)
+4. [Structure](#structure)
+5. [Getting Started](#getting-started)
    - [Installation](#installation)
-5. [Structure](#structure)
 
 ## Introduction <a name="introduction"></a>
 This is the README file for the CulinaryCompass project. CulinaryCompass is a web application for exploring, sharing, and managing recipes.
@@ -30,22 +32,27 @@ Users can add their own recipes to the CulinaryCompass database, complete with d
 The Recipes List page displays a collection of all the recipes available on CulinaryCompass. The user who created the recipe can edit and delete it.
 
 ### My Profile <a name="my-profile"></a>
-Registered users have access to a personalized profile page where they can view and manage their added recipes and update their profile information.
+Registered users have access to a personalized profile page where they can view and manage their added recipes and also update their profile information.
 
 ### Contacts <a name="contacts"></a>
 The Contacts page provides users with a way to get in touch with the CulinaryCompass team for support, feedback, or inquiries.
+
+## Structure <a name="structure"></a>
+Here's an overview of the project structure:
+- `recipe-sharing-app` - This is the CLIENT side of the application.
+   - `src/` - Contains the source code for the CulinaryCompass application.
+     - `app/` - Main application components, modules and services.
+     - `assets/` - Images, fonts, and other static assets.
+     - `environments/` -  stored the apiUrl: `http://localhost:3000/api`
+- `Rest-api` - This is the SERVER side of the application.
 
 ## Getting Started <a name="getting-started"></a>
 ### Installation <a name="installation"></a>
 To run the CulinaryCompass application locally, follow these steps:
 1. Clone this repository to your local machine.
+2. Open a new terminal
+3. Navigate to the folder with the server 'Rest-api'
 2. Install the necessary dependencies using `npm install`.
-3. Start the development server with `npm start`.
-
-## Structure <a name="structure"></a>
-Here's an overview of the project structure:
-- `src/` - Contains the source code for the CulinaryCompass application.
-  - `app/` - Main application components and modules.
-  - `assets/` - Images, fonts, and other static assets.
-  - `styles/` - Global stylesheets.
-- `public/` - Static files served by the application.
+4. Start the development server ('Rest-api') with `npm start`.
+5. Open a second terminal
+6. Navigate to 'recipe-sharing-app' folder and run `ng serve`.
