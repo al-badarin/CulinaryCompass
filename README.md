@@ -1,6 +1,7 @@
 # CulinaryCompass
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+Here you can see a video of the site view:
+<iframe> width="560" height="315" src="[https://www.youtube.com/embed/dQw4w9WgXcQ](https://youtu.be/au5F5Q9bL-o)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Table of Contents
 1. [Introduction](#introduction)
