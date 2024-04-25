@@ -55,12 +55,17 @@ export class ProfileComponent implements OnInit {
   }
 
   toggleEditMode(): void {
-    this.isEditMode = !this.isEditMode;
+    console.log('toggling edit mode func called');
+    
+    if (!this.hasError) {
+      this.isEditMode = !this.isEditMode;
+    }
   }
 
   saveProfileHandle(): void {
     if (this.form.invalid) {
       this.errorMessage = 'Please fill out all required fields correctly.';
+      this.hasError = true;
       return;
     }
 
@@ -70,7 +75,10 @@ export class ProfileComponent implements OnInit {
     this.authService.updateProfile(username!, email!).subscribe(
       (response) => {
         console.log('Profile changes made successfully!', response);
-        this.toggleEditMode();
+        // this.toggleEditMode();
+        this.hasError = false;
+        this.profileDetails = { username, email };
+        this.isEditMode = false;
       },
       (error) => {
         this.hasError = true;
@@ -87,7 +95,9 @@ export class ProfileComponent implements OnInit {
 
   onCancel(e: Event): void {
     e.preventDefault();
-    this.toggleEditMode();
+    if (!this.hasError) {
+      this.toggleEditMode();
+    }
   }
 
   onDeleteRecipe(recipeId: string): void {
