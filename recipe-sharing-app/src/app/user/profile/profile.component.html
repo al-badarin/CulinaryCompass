@@ -71,7 +71,7 @@
               <!-- ACTION BTNS -->
               <div class="btn-container-2">
                 <button type="submit" class="btn btn-success" [disabled]="form.invalid">Save</button>
-                <button type="button" class="btn btn-danger" (click)="onCancel($event)">Cancel</button>
+                <button type="button" class="btn btn-danger" [disabled]="hasError" (click)="onCancel($event)">Cancel</button>
               </div>
             </form>
 
