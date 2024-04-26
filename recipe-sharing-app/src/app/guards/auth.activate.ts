@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/user/auth.service';
 @Injectable({ providedIn: 'root' })
 export class AuthActivate implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
-// TODO: isOwner?
+  // TODO: isOwner?
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
