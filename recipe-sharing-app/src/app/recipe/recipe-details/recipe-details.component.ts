@@ -11,7 +11,6 @@ import { AuthService } from 'src/app/user/auth.service';
 })
 export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe | undefined;
-  recipes: Recipe[] = [];
   isLoggedIn: boolean = false;
   isOwner: boolean = false;
 
@@ -26,15 +25,11 @@ export class RecipeDetailsComponent implements OnInit {
     this.authService.user$.subscribe((user) => {
       if (user) {
         this.isLoggedIn = true;
-        if (this.recipe) {
-          this.checkIsOwner(user._id);
-        }
+        this.fetchRecipeDetails();
       } else {
         this.isLoggedIn = false;
       }
     });
-
-    this.fetchRecipeDetails();
   }
 
   fetchRecipeDetails(): void {
@@ -45,22 +40,17 @@ export class RecipeDetailsComponent implements OnInit {
         (recipe) => {
           this.recipe = recipe;
           if (this.isLoggedIn && this.recipe) {
-            this.checkIsOwner(this.recipe.userId._id);
+            this.recipeService
+              .isOwnerOfRecipe(this.recipe.userId._id)
+              .subscribe((isOwner) => {
+                this.isOwner = isOwner;
+              });
           }
         },
         (error) => {
           console.error('Error fetching recipe details:', error);
         }
       );
-    }
-  }
-
-  checkIsOwner(recipeUserId: string): void {
-    const user = this.authService.user;
-    if (user && user._id === recipeUserId) {
-      this.isOwner = true;
-    } else {
-      this.isOwner = false;
     }
   }
 
@@ -82,9 +72,6 @@ export class RecipeDetailsComponent implements OnInit {
     if (recipeId) {
       this.recipeService.removeRecipe(recipeId).subscribe(
         () => {
-          this.recipes = this.recipes.filter(
-            (recipe) => recipe._id !== recipeId
-          );
           this.router.navigate(['/recipes/recipes-list']);
         },
         (error) => {
