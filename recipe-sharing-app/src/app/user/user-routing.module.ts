@@ -4,17 +4,18 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthActivate } from '../guards/auth.activate';
+import { LoggedInRedirectGuard } from '../guards/loggedInRedirectGuard';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [AuthActivate],
+    canActivate: [LoggedInRedirectGuard],
   },
   {
     path: 'register',
     component: RegisterComponent,
-    // canActivate: [AuthActivate],
+    canActivate: [LoggedInRedirectGuard],
   },
   {
     path: 'profile',
