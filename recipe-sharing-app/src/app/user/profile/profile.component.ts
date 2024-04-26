@@ -29,6 +29,8 @@ export class ProfileComponent implements OnInit {
       ],
     ],
   });
+  // usernameError: boolean = false;
+  // emailError: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -55,8 +57,6 @@ export class ProfileComponent implements OnInit {
   }
 
   toggleEditMode(): void {
-    console.log('toggling edit mode func called');
-    
     if (!this.hasError) {
       this.isEditMode = !this.isEditMode;
     }
@@ -75,14 +75,33 @@ export class ProfileComponent implements OnInit {
     this.authService.updateProfile(username!, email!).subscribe(
       (response) => {
         console.log('Profile changes made successfully!', response);
-        // this.toggleEditMode();
         this.hasError = false;
         this.profileDetails = { username, email };
         this.isEditMode = false;
+        // this.usernameError = false;
+        // this.emailError = false;
       },
       (error) => {
-        this.hasError = true;
         console.error('Profile edit error:', error);
+
+        this.hasError = true;
+
+        // TODO: 
+        // let isUsernameStringInErrorMsg =
+        //   error.error.message.includes('username');
+        // let isEmailStringInErrorMsg = error.error.message.includes('email');
+
+        // if (isUsernameStringInErrorMsg) {
+        //   this.usernameError = true;
+        //   console.log(
+        //     'is username string in the error msg: ',
+        //     this.usernameError
+        //   );
+        // } else if (isEmailStringInErrorMsg) {
+        //   this.emailError = true;
+        //   console.log('is email string in the error msg: ', this.emailError);
+        // }
+
         if (error.error && error.error.message) {
           this.errorMessage = error.error.message;
         } else {
