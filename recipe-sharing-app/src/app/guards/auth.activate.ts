@@ -12,7 +12,6 @@ import { AuthService } from 'src/app/user/auth.service';
 @Injectable({ providedIn: 'root' })
 export class AuthActivate implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
-  // TODO: isOwner?
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -24,7 +23,8 @@ export class AuthActivate implements CanActivate {
     if (this.authService.isLoggedIn) {
       return true;
     } else {
-      this.router.createUrlTree(['/auth/login']);
+      // If the user is NOT logged in, redirect them to 'Error Page'
+      this.router.navigate(['/error-404']);
       return false;
     }
   }
