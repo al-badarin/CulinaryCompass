@@ -10,8 +10,9 @@ import { AuthService } from '../user/auth.service';
 })
 export class RecipeService {
   constructor(private http: HttpClient, private authService: AuthService) {}
+
   // Check if the current user is the owner of a recipe
-  isOwnerOfRecipe(recipeUserId: string): Observable<boolean> {
+  isOwnerOfRecipe(recipeUserId: string) {
     return this.authService.user$.pipe(
       map((user) => {
         if (!user) {
